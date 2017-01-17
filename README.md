@@ -18,4 +18,4 @@ Support for TX6 modules is available for Linux and Microsoft Windows Embedded Co
 #### 3. Yocto
   - Ka-Ro flavoured FSL Community BSP - [fsl-community-bsp-platform](https://github.com/karo-electronics/fsl-community-bsp-platform) - [Wiki pages](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
   - Yocto BSP layer for NXP's ARM based platforms - [meta-fsl-arm-extra](https://github.com/karo-electronics/meta-fsl-arm-extra) - [Wiki pages](https://github.com/karo-electronics/meta-fsl-arm-extra/wiki)
-  - Sample images created with Yocto - [karo-yocto-images](https://github.com/karo-electronics/karo-yocto-images) - [Wiki pages](https://github.com/karo-electronics/karo-yocto-images)
+  - Sample images created with Yocto - [karo-yocto-images](https://github.com/karo-electronics/karo-yocto-images) - [Wiki pages](https://github.com/karo-electronics/karo-yocto-images/wiki)
