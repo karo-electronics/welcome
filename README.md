@@ -3,10 +3,9 @@
 ## Ka-Ro TX6 Series for NXP i.MX6 SOC Processors
 
 Ka-Ro TX6 modules are available for a complete range of NXP i.MX6 SOC
-processors. All modules in the TX family are pin-compatible ([TX-Standard](^TX)), making it easy to
-create a product platform with different features or upgrading for more
-performance.
-
+processors. All modules in the TX family are pin-compatible ([TX-Standard](#TX)),
+making it easy to create a product platform with different features or upgrading
+for more performance.
 
 Ka-Ro TX6 modules are designed and made in Germany for the highest possible
 quality. Ka-Ro offers technical support directly from design engineers and
@@ -27,8 +26,12 @@ Here on Github we provide access to these main areas:
 
 1. Bootloader - U-Boot
 
-       The Bootloader ' Das U-Boot' with integrated support for the TXCOM modules:<br>
-       `karo-tx-uboot` - [[sources]](https://github.com/karo-electronics/karo-tx-uboot) - [[wiki]](https://github.com/karo-electronics/karo-tx-uboot/wiki) - [[PDF]](uboot/TX6_U-Boot.pdf)
+    * The Bootloader ' Das U-Boot' with integrated support for the TXCOM modules:<br>
+       `karo-tx-uboot` - [[sources]](https://github.com/karo-electronics/karo-tx-uboot) - [[PDF]](uboot/TX6_U-Boot.pdf)
+
+        * Flattend Device Tree<br>
+          A quick and dirty "How-to work with the Device Tree under U-Boot" can
+          be found here: [[PDF]](FDT-Quickreference.pdf)
 
 2. Linux Kernel
 
@@ -39,22 +42,24 @@ Here on Github we provide access to these main areas:
     * Linux NXP Kernel (Yocto)<br>
       Linux for TXCOM modules based NXP Yocto BSP kernel, version 4.1<br>
       which includes proprietary driver blob to fully support hardware acceleration<br>
-      NXP - linux-2.6-imx.git` - [[sources @ NXP]](http://git.freescale.com/git/cgit.cgi/imx/linux-2.6-imx.git/) - [[wiki]](https://github.com/karo-electronics/documentation)
+      `NXP - linux-2.6-imx.git` - [[sources @ NXP]](http://git.freescale.com/git/cgit.cgi/imx/linux-2.6-imx.git/)
 
 
 3. Yocto
 
-    - Ka-Ro flavoured "_FSL Community BSP_"<br>
-      `fsl-community-bsp-platform` - [[source]](https://github.com/karo-electronics/fsl-community-bsp-platform) - [[wiki]](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
+    * Getting Started<br>
+      [[Getting started]](https://www.karo-electronics.com/1661.html?&L=1)
+
+    * Ka-Ro flavoured _FSL Community BSP_<br>
+      `fsl-community-bsp-platform` - [[source]](https://github.com/karo-electronics/fsl-community-bsp-platform) - [[README]](https://github.com/karo-electronics/fsl-community-bsp-platform) - [[wiki]](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
 
     * Yocto BSP layer for NXP's ARM based platforms<br>
-      `meta-fsl-arm-extra` - [[source]](https://github.com/karo-electronics/meta-fsl-arm-extra) - [[wiki]](https://github.com/karo-electronics/meta-fsl-arm-extra/wiki)
+      `meta-fsl-arm-extra` - [[source]](https://github.com/karo-electronics/meta-fsl-arm-extra)
 
-    - Sample images created with Yocto<br>
-      `karo-yocto-images` - [[samples]](https://github.com/karo-electronics/karo-yocto-images) - [[wiki]](https://github.com/karo-electronics/karo-yocto-images)
-
+    * Sample images created with Yocto<br>
+      `karo-yocto-images` - [[samples]](https://github.com/karo-electronics/karo-yocto-images)
 
 ---------
 Footnotes & Appendix
 
-[^TX]: See the [TX-Standard](https://www.karo-electronics.com/tx-standard.html) for more.
+<a name="TX">1</a>: See the [TX-Standard](https://www.karo-electronics.com/tx-standard.html) for more.
