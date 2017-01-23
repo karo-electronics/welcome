@@ -1,24 +1,70 @@
 # Welcome to Ka-Ro at Github
 
-## Ka-Ro TX6 Series for NXP i.MX 6 Processors
+## Ka-Ro TX6 Series for NXP i.MX6 SOC Processors
 
-Ka-Ro TX6 modules are available for a complete range of NXP i.MX 6 processors. All modules in the TX family are pin-compatible, making it easy to create a product platform with different features or upgrading for more performance. 
+Ka-Ro TX6 modules are available for a complete range of NXP i.MX6 SOC
+processors. All modules in the TX family are pin-compatible ([TX-Standard](#TX)),
+making it easy to create a product platform with different features or upgrading
+for more performance.
 
-Ka-Ro TX6 modules are designed and made in Germany for the highest possible quality.  Ka-Ro offers Technical Support directly from design engineers and developers, and provides guaranteed long-term availability to ensure extended product lifecycles. 
+Ka-Ro TX6 modules are designed and made in Germany for the highest possible
+quality. Ka-Ro offers technical support directly from design engineers and
+developers, and provides guaranteed long-term availability to ensure extended
+product lifecycles.
 
-Support for TX6 modules is available for Linux and Microsoft Windows Embedded Compact. Third-party support is available for Android and QNX.  
+Support for TX6 modules is available for Linux, Microsoft Windows Embedded
+Compact, as well as is there partnered third-party support available for
+Android and QNX.
 
-### On Github we provide access to these main areas:
-#### 1. U-Boot
-  - Support for U-Boot on TXCOM modules - [karo-tx-uboot](https://github.com/karo-electronics/karo-tx-uboot) - [Wiki pages](https://github.com/karo-electronics/karo-tx-uboot/wiki)
-  
-#### 2. Linux Kernel
-The main difference between Mainline Linux and the proprietary NXP kernel are the GPU drivers. Vivante GPU drivers are only available as closed source binary blobs. Unfortunatele these are not compatible to common Linux standards but are still required for full GPU functionality. An evolving open-source alternative called Etnaviv is used for mainline Linux which might be the choice in the future.
 
-  - Mainline Linux for TXCOM modules based on longterm release kernel version 4.4 - [karo-tx-linux](https://github.com/karo-electronics/karo-tx-linux) - [Wiki pages](https://github.com/karo-electronics/karo-tx-linux/wiki)
-  - NXP Linux for TXCOM modules based on release kernel version 4.1 - [karo-tx-nxp-linux](https://github.com/karo-electronics/karo-tx-nxp-linux) - [Wiki pages](https://github.com/karo-electronics/karo-tx-nxp-linux/wiki)
-  
-#### 3. Yocto
-  - Ka-Ro flavoured FSL Community BSP - [fsl-community-bsp-platform](https://github.com/karo-electronics/fsl-community-bsp-platform) - [Wiki pages](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
-  - Yocto BSP layer for NXP's ARM based platforms - [meta-fsl-arm-extra](https://github.com/karo-electronics/meta-fsl-arm-extra) - [Wiki pages](https://github.com/karo-electronics/meta-fsl-arm-extra/wiki)
-  - Sample images created with Yocto - [karo-yocto-images](https://github.com/karo-electronics/karo-yocto-images) - [Wiki pages](https://github.com/karo-electronics/karo-yocto-images/wiki)
+## This page
+
+This page is for customers and interested to provide listing and easy access
+to documentation.
+
+Here on Github we provide access to these main areas:
+
+1. Bootloader - U-Boot
+
+    * The Bootloader ' Das U-Boot' with integrated support for the TXCOM modules:<br>
+       `karo-tx-uboot` - [[sources]](https://github.com/karo-electronics/karo-tx-uboot) - [[PDF]](uboot/TX6_U-Boot.pdf)
+
+        * Flattend Device Tree<br>
+          A quick and dirty "How-to work with the Device Tree under U-Boot" can
+          be found here: [[PDF]](FDT-Quickreference.pdf)
+
+2. Linux Kernel
+
+    * Linux Mainline Kernel<br>
+      Linux for TXCOM modules based on longterm release kernel, version 4.4<br>
+      `karo-tx-linux` - [[sources]](https://github.com/karo-electronics/karo-tx-linux) - [[wiki]](https://github.com/karo-electronics/karo-tx-linux/wiki)
+
+    * Linux NXP Kernel (Yocto)<br>
+      Linux for TXCOM modules based NXP Yocto BSP kernel, version 4.1<br>
+      which includes proprietary driver blob to fully support hardware acceleration<br>
+      `NXP - linux-2.6-imx.git` - [[sources @ NXP]](http://git.freescale.com/git/cgit.cgi/imx/linux-2.6-imx.git/)
+
+
+3. Yocto
+
+    * Getting Started<br>
+      [[Getting started]](https://www.karo-electronics.com/1661.html?&L=1)
+
+    * Ka-Ro flavoured _FSL Community BSP_<br>
+      `fsl-community-bsp-platform` - [[source]](https://github.com/karo-electronics/fsl-community-bsp-platform) - [[README]](https://github.com/karo-electronics/fsl-community-bsp-platform) - [[wiki]](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
+
+    * Yocto BSP layer for NXP's ARM based platforms<br>
+      `meta-fsl-arm-extra` - [[source]](https://github.com/karo-electronics/meta-fsl-arm-extra)
+
+    * Sample images created with Yocto<br>
+      `karo-yocto-images` - [[samples]](https://github.com/karo-electronics/karo-yocto-images)
+
+---------
+Footnotes & Appendix
+
+<a name="TX">1</a>: See the [TX-Standard](https://www.karo-electronics.com/tx-standard.html) for more.
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
+
+Contact support: support@karo-electronics.de
