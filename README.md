@@ -30,8 +30,11 @@ Here on Github we provide access to these main areas:
        `karo-tx-uboot` - [[sources]](https://github.com/karo-electronics/karo-tx-uboot) - [[PDF]](uboot/TX6_U-Boot.pdf)
 
         * Flattend Device Tree<br>
-          A quick and dirty "How-to work with the Device Tree under U-Boot" can
+          A short "How-to work with the Device Tree under U-Boot" can
           be found here: [[PDF]](FDT-Quickreference.pdf)
+		  
+		  For more comprehensive documentation please look here: [[docu]](dts/dt-home.md)
+		  
 
 2. Linux Kernel
 
