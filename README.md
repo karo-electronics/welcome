@@ -63,3 +63,8 @@ Here on Github we provide access to these main areas:
 Footnotes & Appendix
 
 <a name="TX">1</a>: See the [TX-Standard](https://www.karo-electronics.com/tx-standard.html) for more.
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
+
+Contact support: support@karo-electronics.de
