@@ -1,29 +1,30 @@
-                                        U-Boot for TX6
-                                        ==============
+U-Boot for TX6
+==============
 
 Building U-Boot
 ---------------
 
-Note: There are currently 14 variants of the TX6 module, that
-      require slightly different U-Boot configurations. They are
-      distinguished through the 'TX6' suffix 'q', 'u', 's' or 'ul' and
-      the numerical suffix of the module name. Replace the '?' in the
-      following description with the corresponding digits from your
-      TX6 module.
-      E.g. TX6Q-1010 => 'make tx6q-10x0_config'
+**Note:**  
 
-      Furthermore you can build an U-Boot image for use with the
-      MfGTool by inserting '_mfg' between the module number suffix and
-      the '_config': make tx6q-10x0_mfg_defconfig
+There are currently 14 variants of the TX6 module, that require slightly
+different U-Boot configurations. They are distinguished through the _`TX6`_
+suffix _`Q`_, _`QP`_, _`U`_, _`S`_ or _`UL`_ and the numerical suffix of the
+module name. Replace the '?' in the following description with the corresponding
+digits from your TX6 module.
 
-      The 'x' in the module number suffix is a wildcard for a digit
-      (currently '1' or '3') denoting the HW revision of the module
-      PCB. The 'tx6q-11x0_mfg_config' is valid for the TX6Q-1110 and
-      TX6Q-1130 modules.
-      When chosing the right config for your module you should make
-      sure to select the closest matching config file. E.g. for the
-      TX6Q-1020 module the exact match 'tx6q-1020_defconfig' applies
-      rather than the wildcard match 'tx6q-11x0_defconfig'.
+
+E.g. TX6Q-1010 => 'make tx6q-10x0_config'
+
+Furthermore you can build an U-Boot image for use with the MfGTool by inserting
+`_mfg` between the module number suffix and the `_config`: `make
+tx6q-10x0_mfg_defconfig`
+
+The 'x' in the module number suffix is a wildcard for a digit (currently '1' or
+'3') denoting the HW revision of the module PCB. The 'tx6q-11x0_mfg_config' is
+valid for the TX6Q-1110 and TX6Q-1130 modules. When chosing the right config for
+your module you should make sure to select the closest matching config file.
+E.g. for the TX6Q-1020 module the exact match 'tx6q-1020_defconfig' applies
+rather than the wildcard match 'tx6q-11x0_defconfig'.
 
 
 Unpacking the source
@@ -38,17 +39,53 @@ git://git.karo-electronics.de/karo-tx-uboot.git master
 
 Compiling U-Boot
 ----------------
+
+```console
 export ARCH=arm
 export CROSS_COMPILE=arm-cortexa9-linux-gnueabi-
-make tx6?-????_config            (see above Note!)
+make tx6q-1036_defconfig
 make
+```
 
+**Note:**  
+Replace the shown `make` command _`option`_ (`tx6q-1036_defconfig`) with the
+appropriate TXCOM in question.  
+If the TXCOM is known but not the default config, execute the following command
+in the linux source directory:
+
+`find . -type f -name \*tx6\*config`
+
+to a result list similar to the following (shortend) result list:
+
+```console
+$ find . -type f -name \*tx6\*config
+./configs/tx6q-1036_defconfig
+./configs/tx6q-1036_mfg_defconfig
+[...]
+./configs/tx6qp-8037_defconfig
+./configs/tx6qp-8037_mfg_defconfig
+[...]
+./configs/tx6s-8034_defconfig
+./configs/tx6s-8034_mfg_defconfig
+[...]
+./configs/tx6u-8012_defconfig
+./configs/tx6u-8012_mfg_defconfig
+[...]
+./configs/tx6ul-0010_defconfig
+./configs/tx6ul-0010_mfg_defconfig
+[...]
+./configs/tx6ul-5012_sec_defconfig
+```
+
+Where the filename without path is the value for the `make` _`option`_.
 
 Flashing U-Boot Image
 ---------------------
+* NAND
+* eMMC
+
 For all TX6 modules equipped with NAND flash
-(all modules execpt: TX6Q-1020, TX6S-8035, TX6U-8033, TXUL-0011):
------------------------------------------------------------------
+
 If you want to replace a working U-Boot with a new version, you can
 load the new U-Boot image via TFTP or SD-Card and write it to flash
 with the 'romupdate' command.

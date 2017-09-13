@@ -68,7 +68,7 @@ see the list appropriate to the used TX COM.
 | `ping`       | send ICMP ECHO_REQUEST to network host
 | `printenv`   | print environment variables
 | `reset`      | Perform RESET of the CPU
-| `romupdate`* | Creates an FCB data structure and writes an U-Boot image to flash
+| `romupdate`  | Creates an FCB data structure and writes an U-Boot image to flash
 | `run`	       | run commands in an environment variable
 | `saveenv`    | save environment variables to persistent storage
 | `setenv`     | set environment variables
@@ -84,22 +84,29 @@ see the list appropriate to the used TX COM.
 
 7.2 Commands and explanations
 * `?`
-       ï° alias for 'help'
+  alias for 'help'
+
 * `base`
        print or set address offset which is used for all memory commands
+  ```console
        base                       - print address offset for memory commands
        base off                   - set address offset for memory commands to 'off'
+  ```
 
 * `bdinfo`
        print Board Info structure
+  ```console
        bdinfo                     - prints the information that U-Boot passes about the board such as
                                   memory addresses and sizes, clock frequencies, MAC address, etc.
+  ```
 
 * `bmp`
        manipulate BMP image data
+  ```console
        bmp info <imageAddr>
                                   - display image info bmp display <imageAddr> [x y]
                                   - display image at x,y
+  ```
 
 * `boot`
        the same as bootd; boot default, i.e., run 'bootcmd'
@@ -194,7 +201,7 @@ see the list appropriate to the used TX COM.
   environment handling commands<br>
         env default [-f] -a                   - [forcibly] reset default environment
         env default [-f] var [...]            - [forcibly] reset variable(s) to their default values
-        env delete [-f] var [...]             - [forcibly] delete variable(s)
+env delete [-f] var [...]             - [forcibly] delete variable(s)
         env edit name                         - edit environment variable
         env export [-t | -b | -c] [-s         size] addr [var ...]
                                               - export environment
@@ -239,6 +246,7 @@ see the list appropriate to the used TX COM.
 
 * `fdt`  
   flattened device tree utility commands
+```console
        fdt addr    <addr> [<length>] - Set the fdt location to <addr>
        fdt boardsetup                    - Do board-specific set up
        fdt move    <fdt> <newaddr> <length>
@@ -258,9 +266,9 @@ see the list appropriate to the used TX COM.
        fdt  rsvmem delete <index>        - Delete a mem reserves
        fdt  chosen [<start> <end>]       - Add/update the /chosen branch in the tree
                                          <start>/<end> - initrd start/end addr
-
-_Note:<br>
-Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
+```
+_Note:_  
+Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
 
 
 * `go`  
@@ -343,6 +351,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
 
 * `md`  
       memory display, used to display memory contents both as hexadecimal and ASCII data.
+  ```console
       md [.b, .w, .l] address [count]
                                 memory display
                                 .b             - access memory in size       byte ( 8 bit)
@@ -350,10 +359,11 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
                                 .l             - access memory in size       long (32 bit)
                                 address        - start address
                                 count          - number of objects to be    displayed
+  ```
 
 * `mdio`  
-  (only: TX51, TX53)
       MDIO utility commands
+  ```console
       mdio list                 - List MDIO   buses
       mdio read <phydev> [<devad>.]<reg>
                                 - read PHY's register at <devad>.<reg>
@@ -364,9 +374,11 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
                                 <addr>
                                 <eth name>
       <addr> <devad>, and <reg> may be ranges, e.g. 1-5.4-0x1f.
+  ```
 
 * `mii`  
      MII utility commands
+  ```console
      mii device                - list available devices
      mii device  <devname>     - set current device
      mii info    <addr>        - display MII PHY info
@@ -375,19 +387,23 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
                                - write MII PHY <addr> register <reg>
      mii dump    <addr> <reg> - pretty-print <addr> <reg> (0-5 only)
                                <addr> and/or <reg> may be ranges, e.g. 2-7.
+  ```
 
 * `mm`  
-     memory modify (auto-incrementing); displays the memory address and current content and
-         prompts for hexadecimal user input as desired new content for this address; the address is
-         automatically incremented each time
+  memory modify (auto-incrementing); displays the memory address and current
+  content and prompts for hexadecimal user input as desired new content for this
+  address; the address is automatically incremented each time
+  ```console
      mm[.b, .w, .l] address
                                .b              - access memory in size byte ( 8 bit)
                                .w              - access memory in size word (16 bit)
                                .l              - access memory in size long (32 bit)
                                address         - start address for modification
+  ```
 
 * `mmc`  
      MMC sub system
+  ```console
      mmc read addr blk# cnt
      mmc write addr blk# cnt
      mmc erase blk# cnt
@@ -395,13 +411,17 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
      mmc part                  - lists available partition on current mmc device
      mmc dev [dev] [part]      - show or set current mmc device [partition]
      mmc list                  - lists available devices
+  ```
 
 * `mmcinfo`  
      display MMC info
+  ```console
      mmcinfo                   - device number of the device to dislay info of
+  ```
 
 * `mtdparts`  
       define flash/nand partitions
+  ```console
       mtdparts                   - list partition table
       mtdparts delall            - delete all partitions
       mtdparts del part-id       - delete partition (e.g. part-id = nand0,1)
@@ -431,6 +451,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`._
                                  <name>           := '(' NAME ')'
                                  <ro-flag>        := when set to 'ro' makes partition read-only (not
                                  used, passed to kernel)
+  ```
 
 * `mtest`  
       simple RAM test
