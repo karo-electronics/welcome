@@ -606,7 +606,8 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   print monitor version (prints version and build date of currently running U-Boot)
 
 ---
+## Footnotes & Appendix
 
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

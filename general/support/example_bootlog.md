@@ -1,6 +1,6 @@
+# Log
 
-
-a full and complete bootlog:
+1. A full and complete bootlog:
 
 ```console
 U-Boot 2015.10-rc2-04955-g9619f9d (Jul 05 2016 - 14:46:12 +0200)
@@ -286,3 +286,10 @@ Password:
 You are logged in on the Triton Starterkit System
 root@triton1:~#
 ```
+
+---
+## Footnotes & Appendix
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+Contact support: support@karo-electronics.de

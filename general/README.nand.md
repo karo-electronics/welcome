@@ -115,7 +115,7 @@ or
 Which of the solution is chosen is more a question of taste, and facility. As the
 procedure is similar to procedures used in development the here preferred method
 is the usage of _NFS root_. Further information about _NFS root_ can be found
-[here](#nfs-root) or [here](#footnotes).
+[here](#nfs-root) or [here](#footnotes-appendix)
 
 Required TXCOM state:  
 
@@ -148,7 +148,7 @@ Yet, rather unlike a PC, there is no ready to use CD/USB stick to boot the
 
 ---
 
-```
+```xml
 <!--U-Boot update and environment setup: -->
 body="Recovery" file="%_MFGUBOOT%" >Loading mfg U-Boot.
 
@@ -164,7 +164,7 @@ file="%_DTB%"     address="%_ADDR_DTB%"     - Loading dtb.
 ---
 
 LINUX-MMC
-```
+```console
 Boot...
 
 $ cd /dev;for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'`;do [ -e ${d}rpmb ] && continue;ln -s $d emmc;break;done"> Select SD device...
@@ -281,22 +281,23 @@ $ echo Update Complete!">Done
 ```
 
 ---
-## [Footnotes & Appendix](#footnotes)
-
+## Footnotes & Appendix
 [eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
-[mfg-xml]: /home/oliver/tmp/Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml
+[mfg-xml]: file://Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml
 [tftpd]: http://tftpd32.jounin.net/
 [PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 [TeraTerm]: https://ttssh2.osdn.jp/index.html.en
-[#nfs-root]
+
+
+---
+<a id="nfs-root"></a>
+NFS root:  
 http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems
 https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt
 https://wiki.archlinux.org/index.php/Diskless_system
 http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem
 https://fedoraproject.org/wiki/StatelessLinux/NFSRoot
 https://help.ubuntu.com/community/DisklessUbuntuHowto
-
-
 
 
 ---

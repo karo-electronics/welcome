@@ -64,7 +64,8 @@ SUPER-X == WIN-X
 HYPER-X == MENU-X
 ```
 
-## Footnotes & References
+---
+## Footnotes & Appendix
 rev. 2017-07-26
 
 stolen from the O'Reilly Book "sed & awk, 2nd Edition", Ch. "Conventions Used
@@ -73,6 +74,5 @@ in This Handbook"
 [keys]: https://askubuntu.com/questions/19558/what-are-the-meta-super-and-hyper-keys
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

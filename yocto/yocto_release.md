@@ -155,8 +155,7 @@ machine configuration file.
 The following files are created for Ka-Ro TX modules:
 
 ---
-
-# Footnotes & References
+## Footnotes & Appendix
 Source: <https://www.karo-electronics.de/1651.html>
 
 <a name="pcn">1</a>: Ka-Ro publishes changes to the TX COM in its PCN, which are available to the users in the respective TX COM download area on the [Ka-Ro website][2]
@@ -167,7 +166,5 @@ Source: <https://www.karo-electronics.de/1651.html>
 [5]: http://www.crashcourse.ca/wiki/index.php/BitBake_Tutorial
 
 ---
-
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

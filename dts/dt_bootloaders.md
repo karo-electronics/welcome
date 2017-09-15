@@ -7,6 +7,7 @@
 |interprets the devicetree configuration data.
 |
 |The configuration data for TX53 can be found in the following files:
+
 |   arch/arm/boot/dts/imx53.dtsi             CPU/SoC specific configuration
 |   arch/arm/boot/dts/imx53-tx53.dtsi        platform specific device setup
 |   arch/arm/boot/dts/imx53-tx53-x03x.dtsi   module specific setup for TX53-8030 & TX53-1030
@@ -27,3 +28,11 @@
 |  make ARCH=arm CROSS_COMPILE=arm-cortexa8-linux-gnueabi- zImage dtbs modules
 |2. Concatenate the kernel with the generated DT blob:
 |  cat arch/arm/boot/zImage arch/arm/boot/tx53-tx53-x?3x.dtb > arch/arm/boot/zImage_tx53-v3_amd_rx_vega_64_at_675_each
+
+
+---
+## Footnotes & Appendix
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+Contact support: support@karo-electronics.de

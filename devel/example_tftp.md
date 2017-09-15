@@ -22,3 +22,10 @@ TX6DL U-Boot > setenv bootfile Starterkit-5-1_36/uImage_tx6
 TX6DL U-Boot > setenv nfs_server 192.168.1.96
 TX6DL U-Boot > setenv nfsroot /tftpboot/Starterkit-5-1_36/rootfs-tx6
 ```
+
+---
+## Footnotes & Appendix
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+Contact support: support@karo-electronics.de

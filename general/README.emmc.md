@@ -267,14 +267,13 @@ $ echo Update Complete!">Done
 ```
 
 ---
-## [Footnotes & Appendix](#footnotes)
-
+## Footnotes & Appendix
 [eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
 [mfg-xml]: /home/oliver/tmp/Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml
 [tftpd]: http://tftpd32.jounin.net/
 [PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 [TeraTerm]: https://ttssh2.osdn.jp/index.html.en
-[#nfs-root]
+[#nfs-root]<a id="nfs-root"></a>
 http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems
 https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt
 https://wiki.archlinux.org/index.php/Diskless_system

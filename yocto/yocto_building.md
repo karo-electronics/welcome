@@ -1,27 +1,34 @@
-# Yocto Building
-To initiate the building of a deployable Yocto image the user has to setup the
-build environment for Yocto which requires choosing a `MACHINE=` value
-appropriate to the TX COM in question. This value can be found in the
-following so called machine table
+# Building Yocto
 
+To initiate the building of a deployable Yocto image the user has to setup the
+build environment for Yocto, which requires choosing a `MACHINE=` value
+appropriate to the used TXCOM. This value can be found in the following
+[machine table](yocto_machine-table.md).
+
+Here a listing of the `MACHINE=` values for the different TXCOM.
+
+* [TX6S](yocto_machine-table.md#tx6s)
+* [TX6DL](yocto_machine-table.md#tx6dl)
+* [TX6Q & TX6QP](yocto_machine-table.md#tx6q-tx6qp)
+* [TX6UL](yocto_machine-table.md#tx6ul)
+
+## Set up the environment
+### Commands
 For this purpose the user needs to assign *one* of the following values in
 the `MACHINE` column to the shell variable of the same name.
 See __"[Commands](#Commands)"__ below.
 
-Here after a listing of the `MACHINE=` values for the differernt TX COM.
-
-* [TX6S](#TX6S)
-* [TX6DL](#TX6DL)
-* [TX6Q & TX6QP](#TX6Q_&_TX6QP)
-* [TX6UL](#TX6UL)
-
-# <a name="Commands">Commands</a>
-Set one of the above given values, respective to the TX COM used, in the machine
+Set one of the above given values, respective to the TXCOM used, in the machine
 configuration variable:
 
-`MACHINE=<name_from_list_above>`
+`MACHINE=<name_from_machine_table>`
 
 ## Set up the environment
+Set one of the above given values, respective to the TXCOM used, in the machine
+configuration variable:
+
+`MACHINE=<name_from_machine_table>`
+
 To setup the the Yocto environment insert a value, fitting the desired target,
 from the above table, looking like so:
 
@@ -32,7 +39,7 @@ Choose an image target to build, e.g.:
 
 `core-image-minimal`
 
-**Note:**<br>
+**Note:**  
 To find out what other _`images`_ can be build, these aptly named, cheat sheets
 are available:
 
@@ -61,7 +68,7 @@ provided for that package.
 
 _**Example:**_
 
-For building core-image-minimal:
+For building image (e.g. _core-image-minimal_):
 
 `bitbake core-image-minimal`
 
@@ -98,13 +105,13 @@ machine configuration file.
 The following files are created for Ka-Ro TX modules:
 
 ---
-
-# Footnotes & References
+## Footnotes & References
+<a id="source"></a>  
 Source: <https://www.karo-electronics.de/1651.html>
 
-<a name="pcn">1</a>: Ka-Ro publishes changes to the TX COM in its PCN, which are
-available to the users in the respective TX COM download area on the [Ka-Ro
-website][2]
+<a name="pcn">PCN</a>:  
+Ka-Ro publishes changes to the TX COM in its PCN, which are available to the
+users in the respective TX COM download area on the [Ka-Ro website][2]
 
 [2]: http://www.karo-electronics.de
 [3]: http://elinux.org/Bitbake_Cheat_Sheet
@@ -112,7 +119,5 @@ website][2]
 [5]: http://www.crashcourse.ca/wiki/index.php/BitBake_Tutorial
 
 ---
-
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

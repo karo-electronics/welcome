@@ -51,7 +51,7 @@ What Ka-Ro does with this Yocto release, is to give customers a basic, known to
 work solution, having prepared a OOTB basis, 'cause as in the beginning simply
 put:
 
-[Yocto is] not an embedded Linux distribution - it creates a custom one for you.
+Yocto is not an embedded Linux distribution - it creates a custom one for you.
 
 You as a user need to setup up your distribution, that means you will need to
 decide and setup what will be included in the distribution you create for
@@ -339,15 +339,11 @@ This directory includes the basic device listing and the
 	+-- imx6dl-tx6-nand-mb7-lvds.dts
 	[...]
 
-
-### Footnotes & References
-
+---
+## Footnotes & References
 [1] Kernel Source -> Folder: Documentation/bindings
-
 [2] Devicetree.org
-
 [3] devicetree.org
-
 [4] git docu
 
 In the first age, in the first battle, when the shadows first lengthened, one
@@ -359,6 +355,5 @@ wore the crown of the Night Sentinels, and those that tasted the bite of his
 sword named him.. the Doom Slayer.
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

@@ -166,7 +166,8 @@ For a complete list of commands and their explanations please be referred to the
 [@Denx: *Das U-Boot Manual*](http://www.denx.de/wiki/view/DULG/Manual)
 
 ---
+## Footnotes & Appendix
 
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

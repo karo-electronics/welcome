@@ -86,7 +86,7 @@ https://example.com/test
 [Nice text to an URI](https://stackoverflow.com/questions/5319754/cross-reference-named-anchor-in-markdown)  
 https://github.com/gollum/gollum/issues/587
 
-And yes they do work, but not without loosing the coherency of an URI, as it's
+And, yes, they do work; but not without loosing the coherency of an URI, as it's
 rendered as plain text. Only forcing a URI "resets" the FUBAR.
 
 Hint: Never, **ever**, write anything close to a (bottom) separator, keep your

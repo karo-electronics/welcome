@@ -79,3 +79,10 @@ This is a text
 default value for `PWM_POLARITY_INVERTED` in a Kernel without support for
 polarity inversion is `'2'`, e.g. `#pwm-cells = <2>;`. The removal of the
 property (`#pwm-cells`) resets to the default.
+
+---
+## Footnotes & Appendix
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+Contact support: support@karo-electronics.de

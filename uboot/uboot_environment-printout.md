@@ -49,7 +49,10 @@ video_mode=ET0700
 
 Environment size: 1873/131068 bytes
 ```
----
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
 
+---
+## Footnotes & Appendix
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

@@ -31,41 +31,44 @@ Gültig:
 
 Bei Yocto ist X unter (!Befehle dazu siehe unten!):
 
-- Aktive compilierte Kernel sources (i.e. Work directory):
+* Active kernel sources (i.e. work directory):
   $HOME/<yocto-project-dir>/<build-dir>/tmp/work-shared/<yocto-'MACHINE='-value>/kernel-source
 
 
-- Aktive Kernel-Source git repository, bzw. lokale Kopien der benutzen und
-  benötigten Quellen und/oder repositories:
+* Local copies of all the sources  
+  respectively the sources for the whole project as they are downloaded into local
+  git repositories:
 
-  allg. Bsp.:
+  general example:
   $HOME/<yocto-project-dir>/downloads/git2/<[hostname.]domain.tld>.<directory>.<git-repository>
 
-  Bsp.:
+  Example:
   $HOME/<yocto-project-dir>/downloads/git2/github.com.karo-electronics.karo-tx-linux
 
 Anmrk.:
 Wobei im Fall unseres Kernel der git-repository path aus der unter ".repo"
 enthalten 'Manifest.xml' (welche das 'repo' tool nutzt) hervorgeht.
 
-In den o.g. 'cheat sheets' sind Befehle enthalten die Sie nutzen können um das
-besagte 'Work directory' aus Yocto zu erreichen (ofc, nach aufsetzen der
-Umgebung via 'setup-environment' script):
+In the above given 'cheat sheets' are commands included that allows to jump right into the
+"work directory" from inside the Yocto framework - of course __after__ setup
+of the environment via the `setup-enviornment` script.
 
-allg. Bsp.:
+general example:
 $ bitbake <package> -c <task>
 
-Bsp.:
+Example:
 $ bitbake linux-karo -c devshell
 
-öffnet eine Shell/XTerm im <package> (hier 'linux-karo' [A]) Verzeichnis.
+opens a shell/XTerm in the <package> (here: 'linux-karo' [A]) directory.
 
 [A]
 Der <package> Name ergibt sich aus dem Namen der '.bb' Datei:
 
+```console
 sources/meta-freescale-3rdparty/recipes-kernel/linux/linux-karo_4.4.15.bb
                                                      ^^^^^^^^^^
-                                            Das poppelt sich Yocto zurecht.
+                                            Yocto zurecht.
+```
 
 Bevor Sie nun aber diesen Weg beschreiten:
 
@@ -87,6 +90,8 @@ werden, können sie da säubern ohne das Ihrer Änderungen verloren gehen. Plus
 das Ihrer Änderungen transferierbar (Im LAN? An die Kollegen? Github?) sind.
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
+## Footnotes & Appendix
 
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

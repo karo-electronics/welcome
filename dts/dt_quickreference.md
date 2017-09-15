@@ -641,6 +641,7 @@ The Linux kernel has to be compiled with the option `"CONFIG_PROC_DEVICETREE"` s
 
 Refer to 'Linux/TX\#\#-Driver.pdf' for a list of the device paths and aliases provided and used on the StarterKit & TX-CoM assembly.
 
+---
 ## Footnotes & Appendix
 
 [dtorg]: https://devicetree.org
@@ -658,6 +659,5 @@ Refer to 'Linux/TX\#\#-Driver.pdf' for a list of the device paths and aliases pr
 [3)](#sdfootnote3anc)CoMTFT platform is compatible with non-TX6 CoM, unsupported
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

@@ -121,7 +121,8 @@ methods, like those of "rubbing the dog's nose in his own poop".
     posting style is!
 
 ---
+## Footnotes & Appendix
 
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

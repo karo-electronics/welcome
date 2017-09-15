@@ -71,8 +71,9 @@ set **true**.
 Refer to 'Linux/TX##-Driver.pdf' for a list of the device paths and aliases
 provided and used on the StarterKit & TX-CoM assembly.
 
+---
+## Footnotes & Appendix
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
-
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

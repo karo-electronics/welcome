@@ -43,6 +43,8 @@ minimum. That said we might happen to miss the one or the other
 and would like to apologize beforehand for any inconvinence caused.
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)
+## Footnotes & Appendix
 
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de
