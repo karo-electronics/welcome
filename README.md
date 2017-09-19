@@ -52,7 +52,8 @@ Here on Github we provide access to these main areas:
   * The Bootloader '**Das U-Boot**' with integrated support for the TXCOM modules:  
     `karo-tx-uboot` -
     [[sources]](https://github.com/karo-electronics/karo-tx-uboot) -
-    [[PDF]](uboot/TX6_U-Boot.pdf)
+    [[docu]](uboot/uboot_getting-started.md)
+    [[PDF]][uboot-pdf]
 
   * Flattend Device Tree  
     A short "How-to work with the Device Tree under U-Boot" can be found here:  
@@ -96,6 +97,8 @@ Here on Github we provide access to these main areas:
 ## Footnotes & Appendix
 [gh-com]: https://github.com/karo-electronics
 [tx-stand]: https://www.karo-electronics.com/tx-standard.html
+[uboot-pdf]: https://github.com/karo-electronics/welcome/blob/master/uboot/TX6_U-Boot.pdf
+[fdt-qref]: https://github.com/karo-electronics/welcome/blob/master/FDT-Quickreference.pdf
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

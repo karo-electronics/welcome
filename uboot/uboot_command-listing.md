@@ -1,20 +1,20 @@
 # Command Listing
+This list of available commands in U-Boot, is comprised from **all** TXCOM
+variants and thus can include commands that are either specific to a modules
+of:
 
-This list of available commands in U-Boot, is comprised from **all** TX COM
-variants and thus can include commands that are either specific to a modules of:
-
-* The same SOC family: i.MX50 -> i.MX51 & i.MX53
 * The same COM variant: NAND or eMMC
+* The same SOC family: i.MX50 -> i.MX51 & i.MX53
 
-and hence are not applicable to all TX COM. Please use the command `help` to
-see the list appropriate to the used TX COM.
+and hence are not applicable to all TXCOM. Please use the command `help` to
+see the list appropriate to the used TXCOM.
 
 |   Command    | Description                                                  |
 |:------------:|:-------------------------------------------------------------|
-| `?`	         | alias for `help`
+| `?`          | alias for `help`
 | `base`       | print or set address offset
 | `bdinfo`     | print Board Info structure
-| `bmp`	       | manipulate BMP image data
+| `bmp`        | manipulate BMP image data
 | `boot`       | boot default, i.e., `run 'bootcmd'`
 | `bootce`     | Boot a Windows CE image from memory
 | `bootd`      | boot default, i.e., `run 'bootcmd'`
@@ -23,27 +23,27 @@ see the list appropriate to the used TX COM.
 | `ceconnect`  | Set up a connection to the CE host PC over TCP/IP and download the run-time image
 | `chpart`     | change active partition
 | `clocks`*    | display clocks
-| `cls`	       | clear screen
-| `cmp`	       | memory compare
+| `cls`        | clear screen
+| `cmp`        | memory compare
 | `coninfo`    | print console devices and information
-| `cp`	       | memory copy
+| `cp`         | memory copy
 | `crc32`      | checksum calculation
 | `dcache`     | enable or disable data cache
 | `dhcp`       | boot image via network using DHCP/TFTP protocol
 | `echo`       | echo args to console
 | `editenv`    | edit environment variable
-| `env`	       | environment handling commands
+| `env`        | environment handling commands
 | `ext2load`   | load binary file from a ext2 filesystem
 | `ext2ls`     | list files in a directory (default `/`)
 | `fatinfo`    | print information about filesystem
 | `fatload`    | load binary file from a dos filesystem
 | `fatls`      | list files in a directory (default `/`)
 | `fbdump`     | dump framebuffer contents to flash
-| `fdt`	       | flattened device tree utility commands
-| `go`	       | start application at address `addr`
+| `fdt`        | flattened device tree utility commands
+| `go`         | start application at address `addr`
 | `help`       | print command description/usage
 | `icache`     | enable or disable instruction cache
-| `iim`*       | IIM sub system
+| `iim`        | IIM sub system
 | `iminfo`     | print header information for application image
 | `imxtract`   | extract a part of a multi-image
 | `itest`      | return true/false on integer compare
@@ -51,25 +51,25 @@ see the list appropriate to the used TX COM.
 | `loads`      | load S-Record file over serial line
 | `loady`      | load binary file over serial line (ymodem mode)
 | `loop`       | infinite loop on address range
-| `md`	       | memory display
-| `mdio`*      | MDIO utility commands
-| `mii`	       | MII utility commands
-| `mm`	       | memory modify (auto-incrementing address)
-| `mmc`	       | MMC sub system
+| `md`         | memory display
+| `mdio`       | MDIO utility commands
+| `mii`        | MII utility commands
+| `mm`         | memory modify (auto-incrementing address)
+| `mmc`        | MMC sub system
 | `mmcinfo`    | display MMC info
 | `mtdparts`   | define flash/nand partitions
 | `mtest`      | simple RAM read/write test
-| `mw`	       | memory write (fill)
+| `mw`         | memory write (fill)
 | `nand`       | NAND sub-system
 | `nboot`      | boot from NAND device
 | `nbootce`    | Boot a Windows CE image from NAND
-| `nfs`	       | boot image via network using NFS protocol
-| `nm`	       | memory modify (constant address)
+| `nfs`        | boot image via network using NFS protocol
+| `nm`         | memory modify (constant address)
 | `ping`       | send ICMP ECHO_REQUEST to network host
 | `printenv`   | print environment variables
 | `reset`      | Perform RESET of the CPU
 | `romupdate`  | Creates an FCB data structure and writes an U-Boot image to flash
-| `run`	       | run commands in an environment variable
+| `run`        | run commands in an environment variable
 | `saveenv`    | save environment variables to persistent storage
 | `setenv`     | set environment variables
 | `sleep`      | delay execution for some time
@@ -79,28 +79,27 @@ see the list appropriate to the used TX COM.
 | `version`    | print monitor, compiler and linker version
 
 # something something dark side
-                    * Commands are not available on all TX Series CoM
 
 
 7.2 Commands and explanations
-* `?`
+* `?`  
   alias for 'help'
 
-* `base`
+* `base`  
        print or set address offset which is used for all memory commands
   ```console
        base                       - print address offset for memory commands
        base off                   - set address offset for memory commands to 'off'
   ```
 
-* `bdinfo`
+* `bdinfo`  
        print Board Info structure
   ```console
        bdinfo                     - prints the information that U-Boot passes about the board such as
                                   memory addresses and sizes, clock frequencies, MAC address, etc.
   ```
 
-* `bmp`
+* `bmp`  
        manipulate BMP image data
   ```console
        bmp info <imageAddr>
@@ -108,46 +107,55 @@ see the list appropriate to the used TX COM.
                                   - display image at x,y
   ```
 
-* `boot`
+* `boot`  
        the same as bootd; boot default, i.e., run 'bootcmd'
 
-* `bootce`
+* `bootce`  
        bootce - Boot a Windows CE image from memory
+  ```console
        bootce [args..]
                                   addr           - boot image from address 'addr'
+  ```
 
-* `bootd`
+* `bootd`  
        bootd - boot default, i.e., run 'bootcmd'
 
-* `bootm`
+* `bootm`  
        boot application image from memory
        boot default, i.e., run 'bootcmd'
+```console
        bootm [addr [arg ...]]     - boot application image stored in memory
                                   passing arguments 'arg ...'; when booting a Linux kernel,
                                   'arg' can be the address of an initrd image
+```
 
-* `bootp`
+* `bootp`  
        boot image via network using BOOTP/TFTP protocol
+```console
        bootp [loadAddress] [[hostIPaddr:]bootfilename]
+```
 
-* `ceconnect`
+* `ceconnect`  
        Set up a connection to the CE host PC over TCP/IP and download the run-time image
+```console
        ceconnect [-v] [-t <timeout>]
                                  -v          verbose operation
                                  -t <timeout>
                                              - max wait time (#sec) for the connection
+```
 
-* `chpart`
-       change active partition
+* `chpart`  
+  change active partition
 
-* `clocks`*      (only: TX51, TX53)
-       display clocks
+* `clocks`  
+  display clocks
 
-* `cls`
-       clear screen
+* `cls`  
+  clear screen
 
-* `cmp`
-       memory compare
+* `cmp`  
+  memory compare
+```console
        cmp [.b, .w, .l] addr1 addr2 count
                                  compare memory
                                  .b          - access memory in size byte ( 8 bit)
@@ -156,12 +164,14 @@ see the list appropriate to the used TX COM.
                                  addr1       - address of memory area 1
                                  addr2       - address of memory area 2
                                  count       - number of elements (byte, word, long) to compare
+```
 
-* `coninfo`
-       print console devices and information
+* `coninfo`  
+  print console devices and information
 
-* `cp`
+* `cp`  
        memory copy
+```console
        cp [.b, .w, .l] source target count
                                  copy memory
                                  .b            - access memory in size byte ( 8 bit)
@@ -170,35 +180,45 @@ see the list appropriate to the used TX COM.
                                  source        - source address of the data
                                  target        - target address of the data
                                  count         - number of elements (byte, word, long) to copy
+```
 
-* `crc32`
+* `crc32`  
        checksum calculation
+```console
        crc32 addr1 count [addr2]
                                  calculate checksum of data starting at address addr1 for length count
                                  and (if given) store the result at address addr2
                                  addr1         - start address of data
                                  count         - number of memory addresses of the data
                                  addr2         - storage address for the result of the calculation
+```
 
-* `dcache`
+* `dcache`  
        enable or disable data cache
+```console
        dcache [on, off, flush]
                                  enable, disable, or flush data (writethrough) cache
+```
 
 * `dhcp`  
-       invoke DHCP client to obtain IP/boot params and load ${bootfile} via TFTP if the
-           environment variable 'autoload' is set to 'yes'
+       invoke DHCP client to obtain IP/boot params and load `${bootfile}` via TFTP if the
+           environment variable `autoload` is set to `yes`.
 
 * `echo`  
        echo args to console
+```console
        echo [args]               - echo args to console; \c suppresses newline
+```
 
 * `editenv`  
        edit environment variable
+```console
        editenv name              - edit environment variable 'name'
+```
 
 * `env`  
-  environment handling commands<br>
+  environment handling commands
+```console
         env default [-f] -a                   - [forcibly] reset default environment
         env default [-f] var [...]            - [forcibly] reset variable(s) to their default values
 env delete [-f] var [...]             - [forcibly] delete variable(s)
@@ -211,38 +231,51 @@ env delete [-f] var [...]             - [forcibly] delete variable(s)
         env run var [...]                       - run commands in an environment variable
         env save                              - save environment
         env set [-f] name [arg ...]           - [forcibly] set environment variable
+```
 
 * `ext2load`  
-        load binary file from a Ext2 filesystem<br>
+        load binary file from a Ext2 filesystem  
+```console
         ext2load <interface> <dev[:part]>           [addr] [filename] [bytes]
                                      load binary file 'filename' from 'dev' on 'interface' to
                                      address 'addr' from ext2 filesystem
+```
 
 * `ext2ls`  
-        list files in a directory (default /)<br>
+        list files in a directory (default /)
+```console
         ext2ls <interface> <dev[:part]> [directory]
                                      list files from 'dev' on 'interface' in a 'directory'
+```
 
 * `fatinfo`  
-        print information about filesystem<br>
+        print information about filesystem
+```console
         fatinfo <interface> <dev[:part]>
                                      print information about filesystem from 'dev' on 'interface'
+```
 
 * `fatload`  
-        load binary file from a dos filesystem<br>
+        load binary file from a dos filesystem
+```console
         fatload <interface> <dev[:part]> <addr> <filename> [bytes]
                                      load binary file 'filename' from 'dev' on 'interface'
                                      to address 'addr' from DOS filesystem
+```
 
 * `fatls`  
-        list files in a directory (default /)<br>
+        list files in a directory (default /)
+```console
         fatls <interface> <dev[:part]> [directory]
                                      list files from 'dev' on 'interface' in a 'directory'
+```
 
 * `fbdump`  
        dump framebuffer contents to flash
+```console
        fbdump [partition name]
                                  default partition name: 'logo'
+```
 
 * `fdt`  
   flattened device tree utility commands
@@ -267,79 +300,99 @@ env delete [-f] var [...]             - [forcibly] delete variable(s)
        fdt  chosen [<start> <end>]       - Add/update the /chosen branch in the tree
                                          <start>/<end> - initrd start/end addr
 ```
-_Note:_  
+
+**Note:**  
 Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
 
 
 * `go`  
   start application at address `addr`
-
+```console
   `go addr [arg ...]` - start application at address `addr` passing `arg` as arguments
+```
+
 
 * `help`  
   print online help
   <br>(alias: `?`)
-
+```console
   `help [command ...]` - show help information (for `command`)
 
   `help` prints online help for the monitor commands. Without arguments, it
    prints a short usage message for all commands. To get detailed help information
    for specific commands you can type `help` with one or more command names as
    arguments.
+```
 
 * `icache`  
        enable or disable instruction cache
+```console
        icache [on, off, flush]
                                   enable, disable, or flush instruction cache
-
+```
 
 * `iim`  
- (only: TX51, TX53)
-       IIM sub system
-       iim Warning: all numbers in parameter are in hex format!
+   IIM sub system
+   iim Warning: all numbers in parameter are in hex format!
+```console
        iim read <bank> <row>      - Read some fuses
        iim read fecmac            - Read FEC Mac address
        iim blow <bank> <row> <value>
                                   - Blow some fuses
        iim blow fecmac <0x##:0x##:0x##:0x##:0x##:0x##>
                                   - Blow FEC Mac address
-
+```
 
 * `iminfo`  
        print header information for application image
+```console
        iminfo addr [addr â¦]       - print header information for application image starting at
                                   address 'addr' in memory; this includes verification of the
                                   image contents (magic number, header and payload checksums)
+```
 
 * `imxtract`  
        extract a part of a multi-image
+```console
        imxtract addr part [dest]
                                   extract <part> from legacy image at <addr> and copy to <dest>
+```
 
 * `itest`  
        return true/false on integer compare
+```console
+
        itest [.b, .w, .l, .s] [*]value1 <op> [*]value2
                                   .b            - access memory in size        byte ( 8 bit)
                                   .w            - access memory in size        word (16 bit)
                                   .l            - access memory in size        long (32 bit)
+```
 
 * `loadb`  
        load binary file over serial line (kermit mode)
+```console
+
        loadb [ off ] [ baud ]     - load binary file over serial line with offset 'off' and baudrate
                                   'baud'
+```
 
 * `loads`  
        load S-Record file over serial line
+```console
        loads [ off ]              - load S-Record file over serial line with offset 'off'
+```
 
 
 * `loady`  
-      load binary file over serial line (ymodem mode)
+  load binary file over serial line (ymodem mode)
+```console
       loady [ off ] [ baud ]    - load binary file over serial line with offset 'off' and baudrate
                                 'baud'
+```
 
 * `loop`  
-      infinite loop on address range
+  infinite loop on address range
+```console
       loop [.b, .w, .l] address count
                                 loop on a set of addresses
                                 .b             - access memory in size byte ( 8 bit)
@@ -348,6 +401,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
                                 address        - start address of the loop
                                 count          - number of objects to read
                                 This command can only be terminated by resetting the board!
+```
 
 * `md`  
       memory display, used to display memory contents both as hexadecimal and ASCII data.
@@ -362,7 +416,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   ```
 
 * `mdio`  
-      MDIO utility commands
+  MDIO utility commands
   ```console
       mdio list                 - List MDIO   buses
       mdio read <phydev> [<devad>.]<reg>
@@ -454,7 +508,8 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   ```
 
 * `mtest`  
-      simple RAM test
+  simple RAM test
+```console
       mtest [start [end [pattern [iterations]]]]
                                  simple RAM read/write test
                                  start            - start address of the RAM test area
@@ -463,9 +518,11 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
                                                     Note:
       This test changes the contents of the RAM and may therefore cause crashing of the system
          if the memory area, where this test is applied to, is needed for the system operation.
+```
 
 * `mw`  
-     memory write (fill)
+  memory write (fill)
+```console
      mw [.b, .w, .l] address value [count]
                              write memory
                              .b             - access memory in size byte ( 8 bit)
@@ -474,10 +531,12 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
                              address        - start address to write to
                              value          - value to write to the address(es)
                              count          - number of addresses to which "value" is written
+```
 
 * `nand`  
-     NAND sub-system
-     `nand info`               - show available NAND devices
+  NAND sub-system
+  ```console
+     nand info               - show available NAND devices
      nand device [dev]       - show or set current device
      nand read               - addr off|partition size
      nand write              - addr off|partition size
@@ -499,84 +558,103 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
                              - really clean NAND erasing bad blocks (UNSAFE)
      nand markbad off [...]    - mark bad block(s) at offset (UNSAFE)
      nand biterr off         - make a bit error at offset (UNSAFE)
+  ```
 
 * `nboot`  
-       boot from NAND device
-       nboot [partition] | [[[loadAddr] dev] offset]
+  boot from NAND device
+  ```console
+  nboot [partition] | [[[loadAddr] dev] offset]
+  ```
 
 * `nbootce`  
-       Boot a Windows CE image from NAND
-       nbootce [off|partitition]
-                                 off            - flash offset (hex)
-                                 partition      - partition name
+  Boot a Windows CE image from NAND
+  ```console
+  nbootce [off|partitition]
+           off                 - flash offset (hex)
+           partition           - partition name
+  ```
 
 * `nfs`  
-       boot image via network using NFS protocol
-       nfs [loadAddress] [host ip addr:bootfilename]
+  boot image via network using NFS protocol
+  ```console
+  nfs [loadAddress] [[hostIPaddr:]bootfilename]
+  ```
 
 * `nm`  
-       memory modify (constant address â non-incrementing); displays the memory address and
-           current content and prompts for hexadecimal user input as desired new content for this
-           address
-       nm [.b, .w, .l] address
-                                 memory modify, read and keep address
-                                 .b             - access memory in size byte ( 8 bit)
-                                 .w             - access memory in size word (16 bit)
-                                 .l             - access memory in size long (32 bit)
-                                 address        - address for modification
+  memory modify (constant address - non-incrementing); displays the memory
+  address and current content and prompts for hexadecimal user input as desired
+  new content for this address
+  ```console
+  nm [.b, .w, .l] address
+                               memory modify, read and keep address
+      .b                       - access memory in size byte ( 8 bit)
+      .w                       - access memory in size word (16 bit)
+      .l                       - access memory in size long (32 bit)
+      address                  - address for modification
+  ```
 
 * `ping`  
-       send ICMP ECHO_REQUEST to network host
-       ping pingAddress
+  send ICMP ECHO_REQUEST to network host
+  ```console
+  ping pingAddress
+  ```
 
 * `printenv`  
   print environment variables  
   ```console
-       printenv                  - print values of all environment variables
-       printenv name             - print value of environment variable 'name'
+  printenv                     - print values of all environment variables
+  printenv name                - print value of environment variable 'name'
   ```
 
 * `reset`  
   Perform RESET of the CPU
 
 * `romupdate`  
-  Creates an FCB data structure and writes an U-Boot image to flash  
+  Creates an FCB data structure and writes an U-Boot image to flash
   ```console
   romupdate [-b #] [-n #] [-f #] [-r [#]] [<address>] [<length>]
-             -b #       - first FCB block number (default 0)
-             -n #       - total number of FCB blocks (default 1)
-             -f #       - write bootloader image at block #
-             -r         - write redundant bootloader image at next free block after first image
-             -r #       - write redundant bootloader image at block #
-             -e #       - specify number of redundant blocks per boot loader image
+             -b #              - first FCB block number (default 0)
+             -n #              - total number of FCB blocks (default 1)
+             -f #              - write bootloader image at block #
+             -r                - write redundant bootloader image at next free block after first image
+             -r #              - write redundant bootloader image at block #
+             -e #              - specify number of redundant blocks per boot loader image
 
-             <address>  - RAM address of bootloader image (default: ${fileaddr})
+             <address>         - RAM address of bootloader image (default: ${fileaddr})
 
-             <length>   - length of bootloader image in RAM (default: ${filesize})
+             <length>          - length of bootloader image in RAM (default: ${filesize})
   ```
 
 * `run`  
-  run commands in an environment variable; environment variables can also store sequences
-           of commands; run can be called with several variables as arguments
+  run commands in an environment variable; environment variables can also
+  store sequences of commands; run can be called with several variables as
+  arguments
+  ```console
+   run var [...]                - run the commands in the environment
+                                  variable(s) 'var'.
 
-       `run var [...]`              - run the commands in the environment variable(s) 'var'
-                                  If a variable contains several commands and the execution of one
-                                  command fails, the remaining commands are executed anyway!
-                                  If a call of run contains several variables and the execution of one
-                                  command fails, the execution of run is terminated and the remaining
-                                  variables are NOT executed!
+                                  If a variable contains several commands and
+                                  the execution of one command fails, the
+                                  remaining commands are executed anyway!
+
+                                  If a call of run contains several variables
+                                  and the execution of one command fails, the
+                                  execution of run is terminated and the
+                                  remaining variables are NOT executed!
+  ```
 
 * `saveenv`  
-  save environment variables to persistent storage (all unsaved changes to the
-  environment variables will be lost when the system is rebooted next time)
+  save environment variables to persistent storage
+  (all unsaved changes to the environment variables will be lost when the system
+   is rebooted next time)
 
 * `setenv`  
   set environment variables  
   ```console
-       setenv name value ...      - set environment variable 'name' to 'value ...'
-       setenv name                - delete environment variable 'name'
-                                  Remember that name and value have to be separated by space and/or
-                                  tab characters!
+       setenv name value ...   - set environment variable 'name' to 'value ...'
+       setenv name             - delete environment variable 'name'
+                                 Remember that name and value have to be separated
+                                 by space and/or tab characters!
   ```
 
 * `sleep`  
@@ -591,6 +669,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   source [addr]         - run script starting at addr
                         - A valid image header must be present
   ```
+
 * `tftpboot`  
   boot image via network using TFTP protocol  
   ```console
@@ -602,6 +681,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   ```console
   time command [args...]
   ```
+
 * `version`  
   print monitor version (prints version and build date of currently running U-Boot)
 
