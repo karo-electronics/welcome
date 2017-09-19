@@ -57,9 +57,8 @@ Here on Github we provide access to these main areas:
 
   * Flattend Device Tree  
     A short "How-to work with the Device Tree under U-Boot" can be found here:  
-    [[PDF]](FDT-Quickreference.pdf)
-
-    For more comprehensive documentation please look here:
+    [[PDF]][fdt-qref]  
+    For more comprehensive documentation please look here:  
     [[docu]](dts/dt_home.md)
 
 * __Linux Kernel__
