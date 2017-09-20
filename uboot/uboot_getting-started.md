@@ -77,7 +77,7 @@ for the system, also `help` (or `?`) will show the specifics for each single
 command.
 
 All commands can be abbreviated to the shortest string that uniquely identifies
-each command (e.g. `sa` == `saveenv`, `era` == `erase` or `re` == `reset`).
+each command (e.g. `era` == `erase` or `re` == `reset`).
 
 U-Boot will by pressing the `TAB` key auto-complete the commands. Respectively
 it will complete to the least common denominator and show a list of commands,
