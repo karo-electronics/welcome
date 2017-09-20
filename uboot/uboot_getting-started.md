@@ -22,8 +22,8 @@ please be referred to the official manual, as available
 [here @Denx: *Das U-Boot Manual*][denx-man] (http://www.denx.de/wiki/view/DULG/Manual).
 
 * [Commands](#u-boot-commands)
-* [Environment](uboot/uboot_environment-variables.md)
-    * [Enviroment Printout](uboot/uboot_environment-printout.md)
+* [Environment](uboot_environment-variables.md)
+    * [Enviroment Printout](uboot_environment-printout.md)
 
 
 ## Terminal connection
@@ -96,7 +96,7 @@ All U-Boot commands (exceptions noted, see `help`) expect numbers to be entered
 in hexadecimal input format; therefore a leading `0x` prefix is not required.
 
 ### Overview of Commands
-[Find it here](uboot/uboot_command-listing.md)
+[Find it here](uboot_command-listing.md)
 
 ---
 ## Footnotes & Appendix
