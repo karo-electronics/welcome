@@ -17,59 +17,59 @@ The DT structure for the baseboards of Ka-Ro electronics can be found in the
 tree as follows:
 
 ```console
-	\-- meta-fsl-arm-extra
-		+-- conf
-		[...]
-		+-- recipes-bsp
-		[...]
-		\-- recipes-kernel
-			\-- linux
-				+-- linux-karo-4.1.15
-				[...]
-				|   +-- tx6
-				|   |   +-- imx6qdl-tx6.dtsi
-				|   |   \-- imx6qdl-tx6-gpio.h
-				|   \-- txbase
-				|       +-- aclavis
-				|       |   +-- imx6dl-tx6-emmc-aclavis.dts
-				|       |   +-- imx6dl-tx6-nand-aclavis.dts
-				|       |   +-- imx6q-tx6-emmc-aclavis.dts
-				|       |   +-- imx6q-tx6-nand-aclavis.dts
-				|       |   +-- imx6s-tx6-emmc-aclavis.dts
-				|       |   +-- imx6s-tx6-nand-aclavis.dts
-				|       |   \-- txbase-aclavis.dtsi
-				|       +-- aclavis-lvds
-				|       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
-				|       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
-				|       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
-				|       |   \-- txbase-aclavis-lvds.dtsi
-				|       +-- evalkit
-				|       |   +-- imx6ul-tx6-emmc-evalkit.dts
-				|       |   +-- imx6ul-tx6-nand-evalkit.dts
-				|       |   \-- txbase-evalkit.dtsi
-				|       +-- mb7
-				|       |   +-- imx6dl-tx6-emmc-mb7.dts
-				|       |   +-- imx6dl-tx6-nand-mb7.dts
-				|       |   +-- imx6q-tx6-emmc-mb7.dts
-				|       |   +-- imx6q-tx6-nand-mb7.dts
-				|       |   +-- imx6s-tx6-emmc-mb7.dts
-				|       |   +-- imx6s-tx6-nand-mb7.dts
-				|       |   +-- imx6ul-tx6-emmc-mb7.dts
-				|       |   +-- imx6ul-tx6-nand-mb7.dts
-				|       |   \-- txbase-mb7.dtsi
-				|       \-- mb7-lvds
-				|           +-- imx6dl-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6dl-tx6-nand-mb7-lvds.dts
-				|           +-- imx6q-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6q-tx6-nand-mb7-lvds.dts
-				|           +-- imx6s-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6s-tx6-nand-mb7-lvds.dts
-				|           \-- txbase-mb7-lvds.dtsi
-				+-- linux-karo_4.1.15.bb
-				[...]
+\-- meta-fsl-arm-extra
+	+-- conf
+	[...]
+	+-- recipes-bsp
+	[...]
+	\-- recipes-kernel
+		\-- linux
+			+-- linux-karo-4.1.15
+			[...]
+			|   +-- tx6
+			|   |   +-- imx6qdl-tx6.dtsi
+			|   |   \-- imx6qdl-tx6-gpio.h
+			|   \-- txbase
+			|       +-- aclavis
+			|       |   +-- imx6dl-tx6-emmc-aclavis.dts
+			|       |   +-- imx6dl-tx6-nand-aclavis.dts
+			|       |   +-- imx6q-tx6-emmc-aclavis.dts
+			|       |   +-- imx6q-tx6-nand-aclavis.dts
+			|       |   +-- imx6s-tx6-emmc-aclavis.dts
+			|       |   +-- imx6s-tx6-nand-aclavis.dts
+			|       |   \-- txbase-aclavis.dtsi
+			|       +-- aclavis-lvds
+			|       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
+			|       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
+			|       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
+			|       |   \-- txbase-aclavis-lvds.dtsi
+			|       +-- evalkit
+			|       |   +-- imx6ul-tx6-emmc-evalkit.dts
+			|       |   +-- imx6ul-tx6-nand-evalkit.dts
+			|       |   \-- txbase-evalkit.dtsi
+			|       +-- mb7
+			|       |   +-- imx6dl-tx6-emmc-mb7.dts
+			|       |   +-- imx6dl-tx6-nand-mb7.dts
+			|       |   +-- imx6q-tx6-emmc-mb7.dts
+			|       |   +-- imx6q-tx6-nand-mb7.dts
+			|       |   +-- imx6s-tx6-emmc-mb7.dts
+			|       |   +-- imx6s-tx6-nand-mb7.dts
+			|       |   +-- imx6ul-tx6-emmc-mb7.dts
+			|       |   +-- imx6ul-tx6-nand-mb7.dts
+			|       |   \-- txbase-mb7.dtsi
+			|       \-- mb7-lvds
+			|           +-- imx6dl-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6dl-tx6-nand-mb7-lvds.dts
+			|           +-- imx6q-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6q-tx6-nand-mb7-lvds.dts
+			|           +-- imx6s-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6s-tx6-nand-mb7-lvds.dts
+			|           \-- txbase-mb7-lvds.dtsi
+			+-- linux-karo_4.1.15.bb
+			[...]
 ```
 
 As one can see there are three type of files, first **\*.h** then **\*.dts** and
@@ -78,11 +78,13 @@ finally **\*.dtsi** files.
 Example:
 
 ```console
-				|   |   +-- imx6qdl-tx6.dtsi
-				|   |   \-- imx6qdl-tx6-gpio.h
-				|   \-- txbase
-				|       +-- aclavis
-				|       |   +-- imx6dl-tx6-emmc-aclavis.dts
+  [...]
+	|   |   +-- imx6qdl-tx6.dtsi
+	|   |   \-- imx6qdl-tx6-gpio.h
+	|   \-- txbase
+	|       +-- aclavis
+	|       |   +-- imx6dl-tx6-emmc-aclavis.dts
+  [...]
 ```
 
 ## Files
@@ -118,10 +120,10 @@ categories:
     Example:
 
 	```c++
-	     [...]
-	     #define TX_GPIO_PIN52   &gpio1 16
-	     #define TX_GPIO_PIN53   &gpio1 17
-	     [...]
+	[...]
+	#define TX_GPIO_PIN52   &gpio1 16
+	#define TX_GPIO_PIN53   &gpio1 17
+	[...]
 	```
 
 
@@ -203,7 +205,7 @@ The file looks like the follwoing:
 
 `sources/meta-fsl-arm-extra/conf/machine/tx6u-8030.conf`
 
-```config
+```python
 #@TYPE: Machine
 #@NAME: Ka-Ro electronics i.MX6DL TX6DL Computer-On-Module
 #@SOC: i.MX6DL
@@ -272,8 +274,7 @@ COMPATIBLE_MACHINE  = "(tx6[qus]-.*)"
 
 Inline code
 
-I think you should use an
-`<addr>` element here instead.
+I think you should use an `<addr>` element here instead.
 
 ---
 ## Footnotes & Appendix
@@ -281,8 +282,8 @@ I think you should use an
 [1]: https://www.kernel.org
 [2]: https://www.devicetree.org/specifications/
 [3]: https://github.com/devicetree-org/devicetree-specification-released
-[4]: yocto-machine-table.md
-[5]: yocto-cheatsheet.md
+[4]: yocto_machine-table.md
+[5]: yocto_cheatsheet.md
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

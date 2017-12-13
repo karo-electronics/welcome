@@ -155,8 +155,7 @@ The structure of the files as given by Ka-Ro can be seen here, the relation-
 ship between each are described further down.
 
 ```console
- .
- \-- meta-fsl-arm-extra
+\-- meta-fsl-arm-extra
      +-- conf
      |   \-- machine
      |       +-- include
@@ -254,59 +253,59 @@ ship between each are described further down.
 ### Changing the DT
 
 ```console
-        \-- recipes-kernel
-            \-- linux
-                +-- linux-karo-4.1.15
-                |   +-- imx
-                |   |   +-- bcmhd_gcc6_indent_warning_error_fix.patch
-                |   |   +-- gcc6_integrate_fix.patch
-                |   |   +-- gpu-viv_gcc6_indent_warning_error_fix.patch
-                |   |   +-- reset_ethernet_phy_whenever_the_enet_out_clock_is_being_enabled.patch
-                |   |   \-- set-enet_ref_clk-to-50-mhz.patch
-                |   +-- tx6
-                |   |   +-- defconfig
-                |   |   +-- imx6qdl-tx6.dtsi
-                |   |   \-- imx6qdl-tx6-gpio.h
-                |   \-- txbase
-                |       +-- aclavis
-                |       |   +-- imx6dl-tx6-emmc-aclavis.dts
-                |       |   +-- imx6dl-tx6-nand-aclavis.dts
-                |       |   +-- imx6q-tx6-emmc-aclavis.dts
-                |       |   +-- imx6q-tx6-nand-aclavis.dts
-                |       |   +-- imx6s-tx6-emmc-aclavis.dts
-                |       |   +-- imx6s-tx6-nand-aclavis.dts
-                |       |   \-- txbase-aclavis.dtsi
-                |       +-- aclavis-lvds
-                |       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
-                |       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
-                |       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
-                |       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
-                |       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
-                |       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
-                |       |   \-- txbase-aclavis-lvds.dtsi
-                |       +-- evalkit
-                |       |   +-- imx6ul-tx6-emmc-evalkit.dts
-                |       |   +-- imx6ul-tx6-nand-evalkit.dts
-                |       |   \-- txbase-evalkit.dtsi
-                |       +-- mb7
-                |       |   +-- imx6dl-tx6-emmc-mb7.dts
-                |       |   +-- imx6dl-tx6-nand-mb7.dts
-                |       |   +-- imx6q-tx6-emmc-mb7.dts
-                |       |   +-- imx6q-tx6-nand-mb7.dts
-                |       |   +-- imx6s-tx6-emmc-mb7.dts
-                |       |   +-- imx6s-tx6-nand-mb7.dts
-                |       |   +-- imx6ul-tx6-emmc-mb7.dts
-                |       |   +-- imx6ul-tx6-nand-mb7.dts
-                |       |   \-- txbase-mb7.dtsi
-                |       \-- mb7-lvds
-                |           +-- imx6dl-tx6-emmc-mb7-lvds.dts
-                |           +-- imx6dl-tx6-nand-mb7-lvds.dts
-                |           +-- imx6q-tx6-emmc-mb7-lvds.dts
-                |           +-- imx6q-tx6-nand-mb7-lvds.dts
-                |           +-- imx6s-tx6-emmc-mb7-lvds.dts
-                |           +-- imx6s-tx6-nand-mb7-lvds.dts
-                |           \-- txbase-mb7-lvds.dtsi
-                +-- linux-karo_4.1.15.bb
+\-- recipes-kernel
+    \-- linux
+        +-- linux-karo-4.1.15
+        |   +-- imx
+        |   |   +-- bcmhd_gcc6_indent_warning_error_fix.patch
+        |   |   +-- gcc6_integrate_fix.patch
+        |   |   +-- gpu-viv_gcc6_indent_warning_error_fix.patch
+        |   |   +-- reset_ethernet_phy_whenever_the_enet_out_clock_is_being_enabled.patch
+        |   |   \-- set-enet_ref_clk-to-50-mhz.patch
+        |   +-- tx6
+        |   |   +-- defconfig
+        |   |   +-- imx6qdl-tx6.dtsi
+        |   |   \-- imx6qdl-tx6-gpio.h
+        |   \-- txbase
+        |       +-- aclavis
+        |       |   +-- imx6dl-tx6-emmc-aclavis.dts
+        |       |   +-- imx6dl-tx6-nand-aclavis.dts
+        |       |   +-- imx6q-tx6-emmc-aclavis.dts
+        |       |   +-- imx6q-tx6-nand-aclavis.dts
+        |       |   +-- imx6s-tx6-emmc-aclavis.dts
+        |       |   +-- imx6s-tx6-nand-aclavis.dts
+        |       |   \-- txbase-aclavis.dtsi
+        |       +-- aclavis-lvds
+        |       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
+        |       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
+        |       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
+        |       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
+        |       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
+        |       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
+        |       |   \-- txbase-aclavis-lvds.dtsi
+        |       +-- evalkit
+        |       |   +-- imx6ul-tx6-emmc-evalkit.dts
+        |       |   +-- imx6ul-tx6-nand-evalkit.dts
+        |       |   \-- txbase-evalkit.dtsi
+        |       +-- mb7
+        |       |   +-- imx6dl-tx6-emmc-mb7.dts
+        |       |   +-- imx6dl-tx6-nand-mb7.dts
+        |       |   +-- imx6q-tx6-emmc-mb7.dts
+        |       |   +-- imx6q-tx6-nand-mb7.dts
+        |       |   +-- imx6s-tx6-emmc-mb7.dts
+        |       |   +-- imx6s-tx6-nand-mb7.dts
+        |       |   +-- imx6ul-tx6-emmc-mb7.dts
+        |       |   +-- imx6ul-tx6-nand-mb7.dts
+        |       |   \-- txbase-mb7.dtsi
+        |       \-- mb7-lvds
+        |           +-- imx6dl-tx6-emmc-mb7-lvds.dts
+        |           +-- imx6dl-tx6-nand-mb7-lvds.dts
+        |           +-- imx6q-tx6-emmc-mb7-lvds.dts
+        |           +-- imx6q-tx6-nand-mb7-lvds.dts
+        |           +-- imx6s-tx6-emmc-mb7-lvds.dts
+        |           +-- imx6s-tx6-nand-mb7-lvds.dts
+        |           \-- txbase-mb7-lvds.dtsi
+        +-- linux-karo_4.1.15.bb
 ```
 
 For more details about the device tree please see the following [1][3].
@@ -328,7 +327,7 @@ This directory includes the basic device listing and the
 |   +-- imx6qdl-tx6.dtsi
 |   \-- imx6qdl-tx6-gpio.h
 
-
+```console
 \-- txbase
 	- TX Baseboards
 
@@ -338,6 +337,7 @@ This directory includes the basic device listing and the
 	+-- imx6dl-tx6-emmc-mb7-lvds.dts
 	+-- imx6dl-tx6-nand-mb7-lvds.dts
 	[...]
+```
 
 ---
 ## Footnotes & References

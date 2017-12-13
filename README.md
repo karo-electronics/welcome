@@ -49,7 +49,7 @@ Here on Github we provide access to these main areas:
 
 * __Bootloader - U-Boot__
 
-  * The Bootloader '**Das U-Boot**' with integrated support for the TXCOM modules:  
+  * The bootloader '**Das U-Boot**' with integrated support for the TXCOM modules:  
     `karo-tx-uboot` -
     [[sources]](https://github.com/karo-electronics/karo-tx-uboot) -
     [[docu]](uboot/uboot_getting-started.md)
@@ -64,7 +64,7 @@ Here on Github we provide access to these main areas:
 * __Linux Kernel__
 
   * _Linux Mainline Kernel_  
-    Linux for TXCOM modules based on longterm release kernel, version 4.4  
+    Linux for TXCOM modules based on long-term release kernel, version 4.4  
     `karo-tx-linux` -
     [[sources]](https://github.com/karo-electronics/karo-tx-linux) -
     [[wiki]](https://github.com/karo-electronics/karo-tx-linux/wiki)

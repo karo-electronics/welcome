@@ -13,11 +13,14 @@ Supporting factors for this behaviour for Yocto are, e.g.:
    GNU infrastructure like coreutils, bash, init, etc., are single parts. The
    solution doesn't require: a GUI, X11,
 
-3.
+3. Blubb
 
 
+PREFERRED_VERSION_linux-karo = "4.13"
 ---
 ## Footnotes & Appendix
+
+"Dictatorship is the rule of the uniformed over the uninformed." - Rolf Hochhut
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

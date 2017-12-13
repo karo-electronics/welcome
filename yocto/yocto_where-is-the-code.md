@@ -5,7 +5,7 @@ Dieser Teil der Doku basiert auf unserem 'small footprint' Linux; dort ist
 'arm-linux' eines der Verzeichnisse die wir als Standard verwenden; und im
 Besonderen, das Verzeichnis wo der Linux-Kernel source liegt.
 
-Das heißt also 'arm-linux' ist synonym zu:
+Das heißt also '`arm-linux`' ist synonym zu:
 
 "path-to-linux-kernel-source"
 
@@ -31,44 +31,46 @@ Gültig:
 
 Bei Yocto ist X unter (!Befehle dazu siehe unten!):
 
-* Active kernel sources (i.e. work directory):
-  $HOME/<yocto-project-dir>/<build-dir>/tmp/work-shared/<yocto-'MACHINE='-value>/kernel-source
+* Active kernel sources (i.e. work directory):  
+  `$HOME/<yocto-project-dir>/<build-dir>/tmp/work-shared/<yocto-'MACHINE='-value>/kernel-source`
 
 
 * Local copies of all the sources  
   respectively the sources for the whole project as they are downloaded into local
   git repositories:
 
-  general example:
-  $HOME/<yocto-project-dir>/downloads/git2/<[hostname.]domain.tld>.<directory>.<git-repository>
+  general example:  
+  `$HOME/<yocto-project-dir>/downloads/git2/<[hostname.]domain.tld>.<directory>.<git-repository>`
 
-  Example:
-  $HOME/<yocto-project-dir>/downloads/git2/github.com.karo-electronics.karo-tx-linux
+  Example:  
+  `$HOME/<yocto-project-dir>/downloads/git2/github.com.karo-electronics.karo-tx-linux`
 
-Anmrk.:
+Note:  
 Wobei im Fall unseres Kernel der git-repository path aus der unter ".repo"
-enthalten 'Manifest.xml' (welche das 'repo' tool nutzt) hervorgeht.
+enthalten 'Manifest.xml' (welche das ['repo' tool](1) nutzt) hervorgeht.
 
 In the above given 'cheat sheets' are commands included that allows to jump right into the
 "work directory" from inside the Yocto framework - of course __after__ setup
-of the environment via the `setup-enviornment` script.
+of the environment via the `setup-environment` script.
 
-general example:
-$ bitbake <package> -c <task>
+General example:  
+`$ bitbake <package> -c <task>`
 
-Example:
-$ bitbake linux-karo -c devshell
+Example:  
+`$ bitbake linux-karo -c devshell`
 
-opens a shell/XTerm in the <package> (here: 'linux-karo' [A]) directory.
+opens a shell/XTerm in the _**`<package>`**_ (here: [`linux-karo`](A)) directory.
 
-[A]
-Der <package> Name ergibt sich aus dem Namen der '.bb' Datei:
+[A]: The _**`<package>`**_ Name is implied by the `.bb` file, as follows:
 
 ```console
 sources/meta-freescale-3rdparty/recipes-kernel/linux/linux-karo_4.4.15.bb
-                                                     ^^^^^^^^^^
-                                            Yocto zurecht.
+                                                     ^^^^^^^^^^ ^^^^^^
+                                                        [1]       [2]
 ```
+where there is:  
+`[1] Package name`  
+`[2] Package version`  
 
 Bevor Sie nun aber diesen Weg beschreiten:
 
@@ -91,6 +93,7 @@ das Ihrer Änderungen transferierbar (Im LAN? An die Kollegen? Github?) sind.
 
 ---
 ## Footnotes & Appendix
+[1]: https://gerrit.googlesource.com/git-repo/
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
