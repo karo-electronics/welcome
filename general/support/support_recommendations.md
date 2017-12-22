@@ -1,5 +1,5 @@
-			Recommendations of the Support-Guys
-			===================================
+    Recommendations of the Support-Guys
+    ===================================
 rev. 2016-06-27.01.ow
 
 TOC
@@ -27,11 +27,13 @@ Q: I would like to use SPI, yet it doesn't work as thought.
 A: This is no statement of any value. This is a statement of the class "printer
    doesn't print" and is no way, shape or form helpful.
 
-We require:
+We require:  
 Full and complete bootlogs.
+
 U-Boot commands:
-	* `printenv`
-	* `fdt print`
+
+  * `printenv`
+  * `fdt print`
 
 
 
@@ -40,17 +42,16 @@ U-Boot commands:
 The Ka-Ro BSP is in no way complex. Data, be it documentation or binary files,
 in the BSP it follow a categorizing tree structure, like:
 
-Flashtools		<- All flashing tools
-Linux			<- All directly Linux
-Linux/target		<- All directly Linux - special: binaries for target
-Linux/source		<- All directly Linux - special: sources
-Linux/README		<- All directly Linux - special: README!
-
+```console
+Flashtools              <- All flashing tools  
+Linux                   <- All directly Linux  
+    Linux/target            <- special: binaries for the **target**  
+    Linux/source            <- special: sources  
+    Linux/README            <- special: README!  
+U-Boot                  <- All directly U-Boot  
+```
 Yes README files, in contrast to MS-DOS naming convetion, are text files. More
 machines worldwide know how to handle that than there are MS-Windows machines.
-
-
-
 
 has a general
 
@@ -59,12 +60,12 @@ has a general
 -----------------------------
 We use:
 
-emacs
-console
-   grep
-   find
-shell scripts
-tcl scripts
+emacs  
+console  
+   grep  
+   find  
+shell scripts  
+tcl scripts  
 
 
 

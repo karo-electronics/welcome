@@ -24,10 +24,10 @@ of the pre-installed and pre-setup environment.
 
 There are two solutions to the aforementioned causes, which are as follows:
 
-* Recovery Boot
+* [Recovery Boot](#recovery-boot)
     * State: **bricked**
         * Main cause: Bootloader (U-Boot) rendered inoperative
-* Empty NVM
+* [Empty NVM](install-of-os)
     * State: **bootable** && **no OS boot**
         * Main cause: Missing partition table
 
@@ -108,14 +108,14 @@ procedure setup file [`ucl2.xml`][mfg-xml].
 The hereafter described procedures require either:
 
 
-* NFS shares available with a RFS (a.k.a. "_NFS root_")  
-or  
+* NFS shares available with a RFS (a.k.a. "_[NFS root](#nfs-root)_")  
+  or  
 * Files extracted from the MFGTool packed file
 
 Which of the solution is chosen is more a question of taste, and facility. As the
 procedure is similar to procedures used in development the here preferred method
 is the usage of _NFS root_. Further information about _NFS root_ can be found
-[here](#nfs-root) or [here](#footnotes-appendix)
+[here](#nfs-root) or [here](#footnotes--appendix)
 
 Required TXCOM state:  
 
@@ -268,16 +268,17 @@ $ ln -s $(cd /dev;ls mmcblk*rpmb | sed s/rpmb//) /dev/emmc"> Select eMMC...
 $ [ -b /dev/emmc ] && (echo label-id:0x0cc66cc0; echo size=325632,type=c; echo type=c) | sfdisk /dev/emmc"> Partitioning...
 $ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1">Format Windows partition
 
-$ mkdir -p /mnt/emmcp1"/>
-$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/emmcp1"/>
-pipe cat - > /mnt/emmcp1/nk" file="%_NK%">Write NK
+$ mkdir -p /mnt/emmcp1
+$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/emmcp1
+$ cat - > /mnt/emmcp1/nk
+" file="%_NK%">Write NK
+$ cat - > /mnt/emmcp1/logo.bmp
+" file="%_LOGO%">Write logo bitmap
 frf">flush the memory.
-pipe cat - > /mnt/emmcp1/logo.bmp" file="%_LOGO%">Write logo bitmap
-frf">flush the memory.
-$ umount /mnt/emmcp1"/>
-$ rmdir /mnt/emmcp1"/>
+$ umount /mnt/emmcp1
+$ rmdir /mnt/emmcp1
 
-$ echo Update Complete!">Done
+$ echo "Update Complete!"
 ```
 
 ---
@@ -289,16 +290,14 @@ $ echo Update Complete!">Done
 [TeraTerm]: https://ttssh2.osdn.jp/index.html.en
 
 
----
 <a id="nfs-root"></a>
 NFS root:  
-http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems
-https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt
-https://wiki.archlinux.org/index.php/Diskless_system
-http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem
-https://fedoraproject.org/wiki/StatelessLinux/NFSRoot
-https://help.ubuntu.com/community/DisklessUbuntuHowto
-
+http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems  
+https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt  
+https://wiki.archlinux.org/index.php/Diskless_system  
+http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem  
+https://fedoraproject.org/wiki/StatelessLinux/NFSRoot  
+https://help.ubuntu.com/community/DisklessUbuntuHowto  
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

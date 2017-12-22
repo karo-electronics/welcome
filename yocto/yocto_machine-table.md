@@ -8,7 +8,7 @@ matching the respective TXCOM module to the commands as outlined
 
 * [TX6S](#tx6s)
 * [TX6DL](#tx6dl)
-* [TX6Q & TX6QP](#tx6q-tx6qp)
+* [TX6Q & TX6QP](#tx6q--tx6qp)
 * [TX6UL](#tx6ul)
 
 _Note: see here for a [legend](#legend)_

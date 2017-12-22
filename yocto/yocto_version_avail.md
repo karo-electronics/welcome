@@ -1,4 +1,14 @@
-# Building Yocto
+# Versions
+
+
+## Available Versions
+Currently the Yocto by Ka-Ro has available the following kernel versions to the
+
+* Linux Kernel Version:
+  - 4.1.15
+  - 4.4.15
+  - 4.13
+
 
 To initiate the building of a deployable Yocto image the user has to setup the
 build environment for Yocto, which requires choosing a `MACHINE=` value
@@ -121,4 +131,3 @@ users in the respective TX COM download area on the [Ka-Ro website][2]
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de
-

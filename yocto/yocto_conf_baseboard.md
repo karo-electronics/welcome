@@ -17,58 +17,58 @@ The DT structure for the baseboards of Ka-Ro electronics can be found in the
 tree as follows:
 
 ```console
-	\-- meta-fsl-arm-extra
-		+-- conf
-		[...]
-		+-- recipes-bsp
-		[...]
-		\-- recipes-kernel
-			\-- linux
-				+-- linux-karo-4.1.15
-				[...]
-				|   +-- tx6
-				|   |   +-- imx6qdl-tx6.dtsi
-				|   |   \-- imx6qdl-tx6-gpio.h
-				|   \-- txbase
-				|       +-- aclavis
-				|       |   +-- imx6dl-tx6-emmc-aclavis.dts
-				|       |   +-- imx6dl-tx6-nand-aclavis.dts
-				|       |   +-- imx6q-tx6-emmc-aclavis.dts
-				|       |   +-- imx6q-tx6-nand-aclavis.dts
-				|       |   +-- imx6s-tx6-emmc-aclavis.dts
-				|       |   +-- imx6s-tx6-nand-aclavis.dts
-				|       |   \-- txbase-aclavis.dtsi
-				|       +-- aclavis-lvds
-				|       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
-				|       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
-				|       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
-				|       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
-				|       |   \-- txbase-aclavis-lvds.dtsi
-				|       +-- evalkit
-				|       |   +-- imx6ul-tx6-emmc-evalkit.dts
-				|       |   +-- imx6ul-tx6-nand-evalkit.dts
-				|       |   \-- txbase-evalkit.dtsi
-				|       +-- mb7
-				|       |   +-- imx6dl-tx6-emmc-mb7.dts
-				|       |   +-- imx6dl-tx6-nand-mb7.dts
-				|       |   +-- imx6q-tx6-emmc-mb7.dts
-				|       |   +-- imx6q-tx6-nand-mb7.dts
-				|       |   +-- imx6s-tx6-emmc-mb7.dts
-				|       |   +-- imx6s-tx6-nand-mb7.dts
-				|       |   +-- imx6ul-tx6-emmc-mb7.dts
-				|       |   +-- imx6ul-tx6-nand-mb7.dts
-				|       |   \-- txbase-mb7.dtsi
-				|       \-- mb7-lvds
-				|           +-- imx6dl-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6dl-tx6-nand-mb7-lvds.dts
-				|           +-- imx6q-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6q-tx6-nand-mb7-lvds.dts
-				|           +-- imx6s-tx6-emmc-mb7-lvds.dts
-				|           +-- imx6s-tx6-nand-mb7-lvds.dts
-				|           \-- txbase-mb7-lvds.dtsi
-				+-- linux-karo_4.1.15.bb
+\-- meta-fsl-arm-extra
+	+-- conf
+	[...]
+	+-- recipes-bsp
+	[...]
+	\-- recipes-kernel
+		\-- linux
+			+-- linux-karo-4.1.15
+			[...]
+			|   +-- tx6
+			|   |   +-- imx6qdl-tx6.dtsi
+			|   |   \-- imx6qdl-tx6-gpio.h
+			|   \-- txbase
+			|       +-- aclavis
+			|       |   +-- imx6dl-tx6-emmc-aclavis.dts
+			|       |   +-- imx6dl-tx6-nand-aclavis.dts
+			|       |   +-- imx6q-tx6-emmc-aclavis.dts
+			|       |   +-- imx6q-tx6-nand-aclavis.dts
+			|       |   +-- imx6s-tx6-emmc-aclavis.dts
+			|       |   +-- imx6s-tx6-nand-aclavis.dts
+			|       |   \-- txbase-aclavis.dtsi
+			|       +-- aclavis-lvds
+			|       |   +-- imx6dl-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6dl-tx6-nand-aclavis-lvds.dts
+			|       |   +-- imx6q-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6q-tx6-nand-aclavis-lvds.dts
+			|       |   +-- imx6s-tx6-emmc-aclavis-lvds.dts
+			|       |   +-- imx6s-tx6-nand-aclavis-lvds.dts
+			|       |   \-- txbase-aclavis-lvds.dtsi
+			|       +-- evalkit
+			|       |   +-- imx6ul-tx6-emmc-evalkit.dts
+			|       |   +-- imx6ul-tx6-nand-evalkit.dts
+			|       |   \-- txbase-evalkit.dtsi
+			|       +-- mb7
+			|       |   +-- imx6dl-tx6-emmc-mb7.dts
+			|       |   +-- imx6dl-tx6-nand-mb7.dts
+			|       |   +-- imx6q-tx6-emmc-mb7.dts
+			|       |   +-- imx6q-tx6-nand-mb7.dts
+			|       |   +-- imx6s-tx6-emmc-mb7.dts
+			|       |   +-- imx6s-tx6-nand-mb7.dts
+			|       |   +-- imx6ul-tx6-emmc-mb7.dts
+			|       |   +-- imx6ul-tx6-nand-mb7.dts
+			|       |   \-- txbase-mb7.dtsi
+			|       \-- mb7-lvds
+			|           +-- imx6dl-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6dl-tx6-nand-mb7-lvds.dts
+			|           +-- imx6q-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6q-tx6-nand-mb7-lvds.dts
+			|           +-- imx6s-tx6-emmc-mb7-lvds.dts
+			|           +-- imx6s-tx6-nand-mb7-lvds.dts
+			|           \-- txbase-mb7-lvds.dtsi
+			+-- linux-karo_4.1.15.bb
 				[...]
 ```
 As one can see there are three type of files, first **\*.h** then **\*.dts** and

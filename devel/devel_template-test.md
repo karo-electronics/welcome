@@ -11,11 +11,14 @@ Text_H2
 
 Text jumping to [Anchor - Headline - of the thing](#footnotes-appendix)
 
+Text jumping to [Anchor - Headline - w/ whitespaces & non-ASCII characters](#H3-w--special-cases--more)
+
 Text jumping to [Anchor - Inline - #anchor](#anchor)
 
 Text jumping to [Anchor - Inline - hidden - #anchor_plus](#anchor_plus)
 
 Text jumping to [Anchor - Inline - hidden #2 - #anchor_plus_plus](#anchor_plus_plus)
+
 
 Now a separator & then some sweet lorem ipsum:
 
@@ -61,6 +64,11 @@ Blanditiis sapiente cum modi et deserunt aut excepturi.
 Expedita et fugit expedita magni qui perspiciatis cumque. Aut et eaque
 voluptatibus molestiae quae quis atque ut. Repudiandae dignissimos incidunt est
 ut nemo. Quidem in molestias eius mollitia et ut in mollitia.
+
+
+### H3 w/ special cases & more
+This is just a test heading for TOC/jumplist/anchor creation with and from
+headings that include non-ASCII characters and whitespaces.
 
 ---
 ## Footnotes & Appendix

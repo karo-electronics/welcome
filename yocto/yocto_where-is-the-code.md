@@ -1,36 +1,43 @@
-> In der Doku steht dass es dazu unter arm-linux/Documentation/spi was gibt,
-> könnten Sie mir das vll noch zu kommen lassen?
->   
-Dieser Teil der Doku basiert auf unserem 'small footprint' Linux; dort ist
-'arm-linux' eines der Verzeichnisse die wir als Standard verwenden; und im
-Besonderen, das Verzeichnis wo der Linux-Kernel source liegt.
+# FAQ
+## Where is the code?
+> > The documentation says that there is something under
+> > 'arm-linux/Documentation/spi' could you let me have this?
+>
+First and foremost this references the general publicly available
+documentation as given in the kernel source directory.
 
-Das heißt also '`arm-linux`' ist synonym zu:
+This part of _our_ documentation is based on our 'small footprint' Linux -
+i.e. not Yocto -, in which we use '`arm-linux`' as one of the default
+directories used, and specifically, the directory where the Linux kernel
+source is located.
+
+Therefore the meaning of 'arm-linux' is synonymous with:
 
 "path-to-linux-kernel-source"
 
-Folglich: Dort unter 'Dokumentation' liegt das von Ihnen gesuchte.
+Consequently, there under the directory named 'Documentation' is the document
+you are looking for.
 
-Allgemein empfehlen wir Ihnen bei der Nutzung von Yocto sich mit Informationen
-wie den folgenden vertraut zu machen:
+In general, we encourage the use of freely available information about the
+handling of Yocto, such as the following, to familiarize yourself with the
+framework:
 
-https://community.nxp.com/docs/DOC-94953
-http://elinux.org/Bitbake_Cheat_Sheet
-http://www.openembedded.org/wiki/Bitbake_cheat_sheet
+https://community.nxp.com/docs/DOC-94953  
+https://elinux.org/Bitbake_Cheat_Sheet  
+https://www.openembedded.org/wiki/Bitbake_cheat_sheet  
 
-Die dort gegebenen Befehle erleichtern Ihnen das Leben und Sie werden diese
-tagtäglich nutzen in Ihrem Devel-Prozess.
+The commands given there, will make your life easier and will be of every day
+use in the devel process.
 
+Short introduction to Yocto:
 
-Kurze Einführung in Yocto:
+Yocto does that differently than a kernel developer or LFS would do Yocto is a
+framework to create a _Distribution_ _not_ a *Devel-Framework* [1]. Therefore,
+the following has only limited general validity:
 
-Yocto macht das anders als ein Kernel developer oder LFS machen würde, bedenken
-Sie Yocto ist ein Framework um eine _Distribution_ zu erstellen _nicht_ eine
-*Devel-Framework* [1]. Daher ist das nachfolgende nur beschränkt allgemein
-Gültig:
+For Yocto, X is under (! Commands see below!):
 
-Bei Yocto ist X unter (!Befehle dazu siehe unten!):
-
+---
 * Active kernel sources (i.e. work directory):  
   `$HOME/<yocto-project-dir>/<build-dir>/tmp/work-shared/<yocto-'MACHINE='-value>/kernel-source`
 
@@ -49,19 +56,18 @@ Note:
 Wobei im Fall unseres Kernel der git-repository path aus der unter ".repo"
 enthalten 'Manifest.xml' (welche das ['repo' tool](1) nutzt) hervorgeht.
 
-In the above given 'cheat sheets' are commands included that allows to jump right into the
-"work directory" from inside the Yocto framework - of course __after__ setup
-of the environment via the `setup-environment` script.
+The above given *cheat sheets* include commands that allows to jump right into
+the __*work directory*__ from inside the Yocto framework - of course __after__
+setup of the environment via the `setup-environment` script. A general example:
 
-General example:  
 `$ bitbake <package> -c <task>`
 
 Example:  
 `$ bitbake linux-karo -c devshell`
 
-opens a shell/XTerm in the _**`<package>`**_ (here: [`linux-karo`](A)) directory.
-
-[A]: The _**`<package>`**_ Name is implied by the `.bb` file, as follows:
+will open a shell (XTerm) in the source directory _**`<package>`**_ (here:
+`linux-karo`) directory. Where the _**`<package>`**_ name is implied by the
+`.bb` file, as follows:
 
 ```console
 sources/meta-freescale-3rdparty/recipes-kernel/linux/linux-karo_4.4.15.bb
@@ -90,6 +96,26 @@ Community zurückgeben.
 Vorteil dieser Vorgehensweise, da Yocto Verzeichnisse dazu tendieren groß zu
 werden, können sie da säubern ohne das Ihrer Änderungen verloren gehen. Plus
 das Ihrer Änderungen transferierbar (Im LAN? An die Kollegen? Github?) sind.
+
+---
+
+But before you take this path:
+
+To be strictly correct changes would be commited to a git repository in your
+LAN [2], which is a clone (git clone [--bare]) of the package (`<package>`) you want to
+edit, this in turn clone ('`git clone`') them on a local machine - to access the
+kernel stay there - edit the kernel and - test it - compile [3] Test it as
+needed and via TFTP and NFS RFS (i.e. without writing to NAND or eMMC) and then
+made the changes in your LAN git repo (back) and customize the '`Manifest.xml`'
+to this in the future use.
+
+From the LAN repo then you would the changes - according to GPLv2 - to the
+Return community.
+
+Advantage of this approach, since Yocto directories tend to be big:
+
+_**You can clean them without losing your changes. plus that of your changes are
+transferable (in the LAN? to colleagues? Github?).**_
 
 ---
 ## Footnotes & Appendix
