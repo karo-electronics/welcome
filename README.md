@@ -97,7 +97,7 @@ Here on Github we provide access to these main areas:
 [gh-com]: https://github.com/karo-electronics
 [tx-stand]: https://www.karo-electronics.com/tx-standard.html
 [uboot-pdf]: https://github.com/karo-electronics/welcome/blob/master/uboot/TX6_U-Boot.pdf
-[fdt-qref]: https://github.com/karo-electronics/welcome/blob/master/FDT-Quickreference.pdf
+[fdt-qref]: https://github.com/karo-electronics/welcome/blob/master/dts/FDT-Quickreference.pdf
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

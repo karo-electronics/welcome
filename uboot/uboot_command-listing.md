@@ -10,7 +10,7 @@ and hence are not applicable to all TXCOM. Please use the command `help` to
 see the list appropriate to the used TXCOM.
 
 |   Command    | Description                                                  |
-|:------------:|:-------------------------------------------------------------|
+|:-------------|:-------------------------------------------------------------|
 | `?`          | alias for `help`
 | `base`       | print or set address offset
 | `bdinfo`     | print Board Info structure
@@ -22,7 +22,7 @@ see the list appropriate to the used TXCOM.
 | `bootp`      | boot image via network using BOOTP/TFTP protocol
 | `ceconnect`  | Set up a connection to the CE host PC over TCP/IP and download the run-time image
 | `chpart`     | change active partition
-| `clocks`*    | display clocks
+| `clocks`     | display clocks
 | `cls`        | clear screen
 | `cmp`        | memory compare
 | `coninfo`    | print console devices and information
@@ -76,12 +76,11 @@ see the list appropriate to the used TXCOM.
 | `source`     | run script from memory
 | `tftpboot`   | boot image via network using TFTP protocol
 | `time`       | run commands and summarize execution time
-| `version`    | print monitor, compiler and linker version
+| [`version`](#version)    | print monitor, compiler and linker version
 
-# something something dark side
+## something something dark side
+## Commands and explanations
 
-
-7.2 Commands and explanations
 * `?`  
   alias for 'help'
 
@@ -111,18 +110,18 @@ see the list appropriate to the used TXCOM.
        the same as bootd; boot default, i.e., run 'bootcmd'
 
 * `bootce`  
-       bootce - Boot a Windows CE image from memory
+  bootce - Boot a Windows CE image from memory
   ```console
        bootce [args..]
                                   addr           - boot image from address 'addr'
   ```
 
 * `bootd`  
-       bootd - boot default, i.e., run 'bootcmd'
+  bootd - boot default, i.e., run 'bootcmd'
 
 * `bootm`  
-       boot application image from memory
-       boot default, i.e., run 'bootcmd'
+  boot application image from memory
+  boot default, i.e., run 'bootcmd'
 ```console
        bootm [addr [arg ...]]     - boot application image stored in memory
                                   passing arguments 'arg ...'; when booting a Linux kernel,
@@ -130,19 +129,19 @@ see the list appropriate to the used TXCOM.
 ```
 
 * `bootp`  
-       boot image via network using BOOTP/TFTP protocol
+  boot image via network using BOOTP/TFTP protocol
 ```console
        bootp [loadAddress] [[hostIPaddr:]bootfilename]
 ```
 
 * `ceconnect`  
-       Set up a connection to the CE host PC over TCP/IP and download the run-time image
-```console
+  Set up a connection to the CE host PC over TCP/IP and download the run-time image
+  ```console
        ceconnect [-v] [-t <timeout>]
-                                 -v          verbose operation
-                                 -t <timeout>
+                  -v          verbose operation
+                  -t                <timeout>
                                              - max wait time (#sec) for the connection
-```
+  ```
 
 * `chpart`  
   change active partition
@@ -221,7 +220,7 @@ see the list appropriate to the used TXCOM.
 ```console
         env default [-f] -a                   - [forcibly] reset default environment
         env default [-f] var [...]            - [forcibly] reset variable(s) to their default values
-env delete [-f] var [...]             - [forcibly] delete variable(s)
+        env delete [-f] var [...]             - [forcibly] delete variable(s)
         env edit name                         - edit environment variable
         env export [-t | -b | -c] [-s         size] addr [var ...]
                                               - export environment
@@ -682,7 +681,7 @@ Dereference aliases by omitting the leading `/`, e.g. `fdt print ethernet0`.
   time command [args...]
   ```
 
-* `version`  
+* <a id="version">`version`</a>  
   print monitor version (prints version and build date of currently running U-Boot)
 
 ---

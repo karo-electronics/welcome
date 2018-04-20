@@ -81,8 +81,8 @@ btw.:
 Probably also a `<a id="anchor_plus"/>` (self-closing [XML/HTML5] tag) works:
 
 <a id="anchor_plus_plus"/>Hidden Anchor #2  
-https://example.com/test  
-https://example.com/test  
+https://example.com/test1  
+https://example.com/test2  
 [Nice text to an URI](https://stackoverflow.com/questions/5319754/cross-reference-named-anchor-in-markdown)  
 https://github.com/gollum/gollum/issues/587
 
@@ -92,7 +92,7 @@ rendered as plain text. Only forcing a URI "resets" the FUBAR.
 Hint: Never, **ever**, write anything close to a (bottom) separator, keep your
 distance at all times, otherwise it looks like this:
 
-This example text is no heading but as an example it shows what happens.
+This example text is no heading but an example, which shows what happens if you don't keep your distance to following element(s); in this case that of a (supposed) separator (`---`).
 ---
 
 ---

@@ -69,7 +69,7 @@ sources/meta-freescale-3rdparty/recipes-kernel/linux/linux-karo_4.4.15.bb
                                                      ^^^^^^^^^^
                                             Yocto zurecht.
 ```
-
+### German
 Bevor Sie nun aber diesen Weg beschreiten:
 
 Korrekterweise würden Sie Ihre Änderungen in ein bei Ihnen im LAN erreichbares
@@ -89,6 +89,33 @@ Vorteil dieser Vorgehensweise, da Yocto Verzeichnisse dazu tendieren groß zu
 werden, können sie da säubern ohne das Ihrer Änderungen verloren gehen. Plus
 das Ihrer Änderungen transferierbar (Im LAN? An die Kollegen? Github?) sind.
 
+### English
+But before you take this path:   
+
+Generally speaking that means:  
+To apply one's own changes to a package, like the kernel, busybox, eudev, etc.
+
+One would clone (cmd: git clone) the package's original repository setup 
+
+
+Correctly, your changes would be committed to a `git` repository [2] in your LAN -
+usually a NFS share, to preserve Unix file permissions, but `git` isn't
+pernickety about that as long as the target FS supports links.
+
+
+This repository is a clone (git clone [--bare]) of the package's (e.g. busybox)
+public repository changes are , this in turn clone ('git clone') them on a local machine - to
+access the kernel stay there - edit the kernel and - test it - compile [3] Test
+it as needed and via TFTP and NFS RFS (ie without writing to NAND or eMMC) and
+then made the changes in your LAN git repo (back) and customize the
+'Manifest.xml' to this in the future use.
+
+From the LAN repo then you would the changes - according to GPLv2 - to the
+Return community.
+
+Advantage of this approach, since yocto directories tend to be big
+You can clean them without losing your changes. plus
+that of your changes are transferable (in the LAN? to colleagues? Github?)
 ---
 ## Footnotes & Appendix
 

@@ -1,0 +1,95 @@
+# Linux kernel
+
+The Linux kernel is the following as given by Wikipedia:
+
+"The Linux kernel is an open-source monolithic Unix-like computer operating
+system kernel. The Linux family of operating systems is based on this kernel and
+deployed on both traditional computer systems such as personal computers and
+servers, usually in the form of Linux distributions,[9] and on various embedded
+devices such as routers, wireless access points, PBXes, set-top boxes, FTA
+receivers, smart TVs, PVRs, and NAS appliances. The Android operating system for
+tablet computers, smartphones, and smartwatches uses services provided by the
+Linux kernel to implement its functionality. While the adoption on desktop
+computers is low, Linux-based operating systems dominate nearly every other
+segment of computing, from mobile devices to mainframes. As of November 2017,
+all of the world's 500 most powerful supercomputers run Linux.[10]
+
+The Linux kernel was conceived and created in 1991 by Linus Torvalds[11] for his
+personal computer and with no cross-platform intentions, but has since expanded
+to support a huge array of computer architectures, many more than other
+operating systems or kernels. Linux rapidly attracted developers and users who
+adopted it as the kernel for other free software projects, notably the GNU
+Operating System.[12] The Linux kernel has received contributions from nearly
+12,000 programmers from more than 1,200 companies, including some of the largest
+software and hardware vendors.[13][14]
+
+The Linux kernel API, the application programming interface (API) through which
+user programs interact with the kernel, is meant to be very stable and to not
+break userspace programs (some programs, such as those with GUIs, rely on other
+APIs as well). As part of the kernel's functionality, device drivers control the
+hardware; "mainlined" device drivers are also meant to be very stable. However,
+the interface between the kernel and loadable kernel modules (LKMs), unlike in
+many other kernels and operating systems, is not meant to be very stable by
+design.[15]
+
+The Linux kernel, developed by contributors worldwide, is a prominent example of
+free and open source software,[16] and it's supported up to six years depending
+on version. Day-to-day development discussions take place on the Linux kernel
+mailing list (LKML). The Linux kernel is released under the GNU General Public
+License version 2 (GPLv2),[6][17] with some firmware images released under
+various non-free licenses.[8]"
+
+
+Further is following defined:
+
+## Loadable kernel modules
+It is debated whether loadable kernel modules (LKMs) are to be considered
+derivative works under copyright law, and thereby fall under the terms of the
+GPL.
+
+Torvalds has stated his belief that LKMs using only a limited, "public" subset
+of the kernel interfaces can sometimes be non-derived works, thus allowing some
+binary-only drivers and other LKMs that are not licensed under the GPL.[citation
+needed] A very good example for this is the usage of dma_buf by the proprietary
+Nvidia graphics drivers. dma_buf is a recent kernel feature (like the rest of
+the kernel, it is licensed under the GPL) that allows multiple GPUs to quickly
+copy data into each other's framebuffers.[45] One possible use case would be
+Nvidia Optimus that pairs a fast GPU with an Intel integrated GPU, where the
+Nvidia GPU writes into the Intel framebuffer when it is active. But, Nvidia
+cannot use this infrastructure because it uses a technical means to enforce the
+rule that it can only be used by LKMs that are also GPL. Alan Cox replied on
+LKML, rejecting a request from one of their engineers to remove this technical
+enforcement from the API.[46] Not all Linux kernel contributors agree with this
+interpretation, however, and even Torvalds agrees that many LKMs are clearly
+derived works, and indeed he writes that "kernel modules ARE derivative 'by
+default'".[47]
+
+On the other hand, Torvalds has also said that "one gray area in particular is
+something like a driver that was originally written for another operating system
+(i.e. clearly not a derived work of Linux in origin). [...] THAT is a gray area,
+and _that_ is the area where I personally believe that some modules may be
+considered to not be derived works simply because they weren't designed for
+Linux and don't depend on any special Linux behaviour."[48] Proprietary graphics
+drivers, in particular, are heavily discussed. Ultimately, it is likely that
+such questions can only be resolved by a court.
+
+
+## Firmware binary blobs
+One point of licensing controversy is the use of firmware "binary blobs" in
+Linux kernel to support several hardware devices. These files are under a
+variety of licenses, out of which many are restrictive and their exact
+underlying source code is usually unknown.[8]
+
+In 2002, Richard Stallman stated why, in his point of view, such blobs make the
+Linux kernel partially non-free software, and that distributing Linux kernel
+"violates the GPL", which requires "complete corresponding source code" to be
+available.[7] In 2008, Free Software Foundation Latin America started
+Linux-libre as a project that creates a completely free variant of the Linux
+kernel without proprietary objects; it is used by certain completely free Linux
+distributions, such as those endorsed by the Free Software Foundation, while it
+can also be used on most distributions.[49]
+
+On 15 December 2010, the Debian Project announced that the next Debian stable
+version "6.0 Squeeze" would come with a kernel "stripped of all non-free
+firmware bits".[50] This policy was continued to be applied in later stable
+Debian releases.

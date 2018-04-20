@@ -1,0 +1,301 @@
+# Compile of out-of-tree LKM
+
+## Introduction
+The Linux kernel
+
+```
+drwxr-xr-x 259 oliver oliver  8192 2018-04-12 15:24:20 sstate-cache
+[oliver@vostro-og-ow]: ~/projects/yocto/rocko_rel-2018-04 $ MACHINE=imx6ul-txul-nand source ./setup-environment build-imx6ul-txul-nand
+Configuring for imx6ul-txul-nand
+
+Welcome to Ka-Ro electronics TX module BSP
+
+The Yocto Project has extensive documentation about OE including a
+reference manual which can be found at:
+    https://yoctoproject.org/documentation
+
+For more information about OpenEmbedded see their website:
+    https://www.openembedded.org/
+
+For a Ka-Ro specific Yocto guide please refer to:
+    "Getting Started" > "Yocto Guide" in the respective TX module page on
+    https://www.karo-electronics.com
+
+You can start your build now with 'bitbake karo-image-minimal'
+
+Your build environment has been configured with:
+
+    MACHINE=imx6ul-txul-nand
+    SDKMACHINE=x86_64
+    DISTRO=karo-minimal
+```
+```
+[oliver@vostro-og-ow]: ~/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand $ bitbake karo-image-minimal
+Parsing recipes: 100% |################################################################################################################| Time: 0:00:55
+Parsing of 1925 .bb files complete (0 cached, 1925 parsed). 2724 targets, 97 skipped, 0 masked, 0 errors.
+NOTE: Resolving any missing task queue dependencies
+
+Build Configuration:
+BB_VERSION           = "1.36.0"
+BUILD_SYS            = "x86_64-linux"
+NATIVELSBSTRING      = "universal-4.9"
+TARGET_SYS           = "arm-poky-linux-gnueabi"
+MACHINE              = "imx6ul-txul-nand"
+DISTRO               = "karo-minimal"
+DISTRO_VERSION       = "2.4.2"
+TUNE_FEATURES        = "arm armv7ve vfp neon callconvention-hard cortexa7"
+TARGET_FPU           = "hard"
+meta-networking
+meta-oe
+meta-python          = "HEAD:dacfa2b1920e285531bec55cd2f08743390aaf57"
+meta
+meta-poky
+meta-yocto-bsp       = "HEAD:198ea7da88a2b67fd3d5d02c7b0d8d10f85bafe2"
+meta-karo            = "HEAD:c17d83ca0403bdf929b488ffb588a9566c9a52cf"
+
+Initialising tasks: 100% |#############################################################################################################| Time: 0:00:07
+NOTE: Executing SetScene Tasks
+NOTE: Executing RunQueue Tasks
+```
+
+
+```
+[oliver@vostro-og-ow]: ~/projects/yocto/rocko_rel-2018-04/wf111 $ make help
+Build environment for Linux drivers of Bluegiga WF111 module
+
+Usage:
+
+targets:
+    unifi_sdio             - build unifi driver
+    unifi_sdio_android     - build unifi driver for Android
+    install                - build and install binaries to OUTPUT
+    install_android        - build and install Android binaries
+                             to OUTPUT
+    install_static         - build and install statically linked
+                             binaries to OUTPUT
+    install_static_android - build and install statically linked
+                             Android binaries to OUTPUT
+    clean                  - clean the build tree
+
+variables:
+    KDIR                   - path to kernel source tree
+    ARCH                   - x86, arm, powerpc
+    CROSS_COMPILE          - cross compile prefix (optional)
+    OUTPUT                 - install destination path (default: output)
+
+Example: make KDIR=/path/to/linux ARCH=arm CROSS_COMPILE=arm-linux- install_static
+[oliver@vostro-og-ow]: ~/projects/yocto/rocko_rel-2018-04/wf111 $
+
+CROSS_COMPILE=arm-poky-linux-gnueabi-
+OUTPUT=/tftpboot/tx6/rootfs-wpa-3/
+
+KDIR=$HOME/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source
+
+make KDIR=$HOME/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source OUTPUT=/tftpboot/tx6/rootfs-wpa-3/ install_static
+
+Makefile:75: *** WIRELESS_EXT is missing from the kernel config.  Stop.
+
+KBUILD_OUTPUT=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/build
+
+$KBUILD_OUTPUT
+
+unset KBUILD_OUTPUT
+
+make KDIR=~/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source OUTPUT=/tftpboot/tx6/rootfs-wpa-3 install_static
+```
+```
+# penv
+AR=arm-poky-linux-gnueabi-ar
+ARCH=arm
+AS=arm-poky-linux-gnueabi-as
+base_bindir=/bin
+base_libdir=/lib
+base_prefix=
+base_sbindir=/sbin
+BB_ENV_EXTRAWHITE=ALL_PROXY BBPATH_EXTRA BB_NO_NETWORK BB_NUMBER_THREADS BB_SETSCENE_ENFORCE BB_SRCREV_POLICY DISTRO FTPS_PROXY FTP_PROXY GIT_PROXY_COMMAND HTTPS_PROXY HTTP_PROXY MACHINE NO_PROXY PARALLEL_MAKE SCREENDIR SDKMACHINE SOCKS5_PASSWD SOCKS5_USER SSH_AGENT_PID SSH_AUTH_SOCK STAMPS_DIR TCLIBC TCMODE all_proxy ftp_proxy ftps_proxy http_proxy https_proxy no_proxy
+BBPATH=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand
+bindir=/usr/bin
+BUILD_AR=ar
+BUILD_AS=as
+BUILD_CC=gcc
+BUILD_CCLD=gcc
+BUILD_CFLAGS=-isystem/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/include -O2 -pipe
+BUILD_CPPFLAGS=-isystem/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/include
+BUILD_CPP=gcc  -E
+BUILD_CXXFLAGS=-isystem/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/include -O2 -pipe
+BUILD_CXX=g++
+BUILDDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand
+BUILD_FC=gfortran
+BUILD_LDFLAGS=-L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-O1
+BUILD_LD=ld
+BUILD_NM=nm
+BUILD_RANLIB=ranlib
+BUILD_STRIP=strip
+BZIP_BIN=pbzip2
+CCACHE_DIR=/home/oliver/.ccache
+CC=arm-poky-linux-gnueabi-gcc  -march=armv7ve -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot
+CCLD=arm-poky-linux-gnueabi-gcc  -march=armv7ve -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot
+CFLAGS= -O2 -pipe -g -feliminate-unused-debug-types -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0=/usr/src/debug/linux-karo/4.14.24-r0 -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native= -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot=
+CMDLINE_CONSOLE=console=ttyS0
+COLORTERM=xfce4-terminal
+COMP_WORDBREAKS=
+CPP=arm-poky-linux-gnueabi-gcc -E --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot  -march=armv7ve -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7
+CPPFLAGS=
+CROSS_COMPILE=arm-poky-linux-gnueabi-
+CROSS_CURSES_INC=-DCURSES_LOC="<curses.h>"
+CROSS_CURSES_LIB=-lncurses -ltinfo
+CVSROOT=/usr/local/cvs
+CXX=arm-poky-linux-gnueabi-g++  -march=armv7ve -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot
+CXXFLAGS= -O2 -pipe -g -feliminate-unused-debug-types -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0=/usr/src/debug/linux-karo/4.14.24-r0 -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native= -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot=  -fvisibility-inlines-hidden
+datadir=/usr/share
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-AB1ALCn3C0,guid=e2aa5b10a67791206b0e7ed85abb982f
+DESKTOP_SESSION=lightdm-xsession
+DISPLAY=:0.0
+docdir=/usr/share/doc
+EDITOR=nano
+exec_prefix=/usr
+EXTRA_OECONF= --disable-static
+EXTRA_OEMAKE= HOSTCC="gcc  -isystem/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/include -O2 -pipe -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-O1" HOSTCPP="gcc  -E"
+FC=arm-poky-linux-gnueabi-gfortran  -march=armv7ve -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a7 --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot
+GDMSESSION=lightdm-xsession
+GLADE_CATALOG_PATH=:
+GLADE_MODULE_PATH=:
+GLADE_PIXMAP_PATH=:
+GNOME_KEYRING_CONTROL=/home/oliver/.cache/keyring-C805FZ
+GPG_AGENT_INFO=/tmp/gpg-6mmnWt/S.gpg-agent:3995:1
+GTK_MODULES=gail:atk-bridge
+GZIP_BIN=pigz
+HOME=/home/oliver
+HOST_EXTRACFLAGS=-isystem/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/include -O2 -pipe -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-O1
+HOSTLDFLAGS=-L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -L/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath-link,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/lib -Wl,-rpath,/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/lib -Wl,-O1
+includedir=/usr/include
+infodir=/usr/share/info
+KBUILD_BUILD_HOST=karo-electronics.de
+KBUILD_BUILD_USER=support
+KEYSET=1
+LANG=en_GB.utf8
+LANGUAGE=en_GB:en_US:en
+LC_ALL=en_US.UTF-8
+LC_MEASUREMENT=de_DE.UTF-8
+LC_MONETARY=de_DE.UTF-8
+LC_NUMERIC=en_GB.UTF-8
+LC_PAPER=en_DK.UTF-8
+LC_TIME=de_DE.UTF-8
+LD=arm-poky-linux-gnueabi-ld --sysroot=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot
+LDFLAGS=
+LD_LIBRARY_PATH=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native/usr/lib/pseudo/lib:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native/usr/lib/pseudo/lib64
+LD_PRELOAD=libpseudo.so
+libdir=/usr/lib
+libexecdir=/usr/libexec
+localstatedir=/var
+LOGNAME=oliver
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+LS_OPTIONS=--color=auto
+MAKE=make
+mandir=/usr/share/man
+NM=arm-poky-linux-gnueabi-nm
+nonarch_base_libdir=/lib
+nonarch_libdir=/usr/lib
+OBJCOPY=arm-poky-linux-gnueabi-objcopy
+OBJDUMP=arm-poky-linux-gnueabi-objdump
+oldincludedir=/usr/include
+OLDPWD=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source
+OS=linux-gnueabi
+PATH=/home/oliver/bin:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-uninative/x86_64-linux/usr/bin:/home/oliver/projects/yocto/rocko_rel-2018-04/sources/poky/scripts:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/bin/arm-poky-linux-gnueabi:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot/usr/bin/crossscripts:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/sbin:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/bin:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/sbin:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/bin:/home/oliver/projects/yocto/rocko_rel-2018-04/sources/poky/bitbake/bin:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/hosttools:/home/oliver/projects/yocto/rocko_rel-2018-04/sources/poky/scripts:/home/oliver/projects/yocto/rocko_rel-2018-04/sources/poky/bitbake/bin:/home/oliver/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/oliver/bin/openocd:/home/oliver/bin/android/sdk/platform-tools:/home/oliver/bin/local:/home/oliver/bin/openocd:/home/oliver/bin/android/sdk/platform-tools:/home/oliver/bin/local
+PBZ=--use-compress-prog=pbzip2
+PGZ=--use-compress-prog=pigz
+PKG_CONFIG_DIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot/usr/lib/pkgconfig
+PKG_CONFIG_DISABLE_UNINSTALLED=yes
+PKG_CONFIG_LIBDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot/usr/lib/pkgconfig
+PKG_CONFIG_PATH=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot/usr/lib/pkgconfig:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/lPKG_CONFIG_SYSTEM_INCLUDE_PATH=/usr/include
+PKG_CONFIG_SYSTEM_LIBRARY_PATH=/lib:/usr/lib
+prefix=/usr
+PSEUDO_BINDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native/usr/bin
+PSEUDO_DEBUG=
+PSEUDO_DISABLED=0
+PSEUDO_LIBDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native/usr/lib/pseudo/lib
+PSEUDO_LOCALSTATEDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/pseudo/
+PSEUDO_NOSYMLINKEXP=1
+PSEUDO_OPTS=
+PSEUDO_PASSWD=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot:/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native
+PSEUDO_PREFIX=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/sysroots-components/x86_64/pseudo-native/usr
+PWD=/home/oliver/projects/yocto/rocko_rel-2018-04/wf111
+RANLIB=arm-poky-linux-gnueabi-ranlib
+READELF=arm-poky-linux-gnueabi-readelf
+sbindir=/usr/sbin
+servicedir=/srv
+SESSION_MANAGER=local/vostro-og-ow:@/tmp/.ICE-unix/3990,unix/vostro-og-ow:/tmp/.ICE-unix/3990
+sharedstatedir=/com
+SHELL=/bin/bash
+SHLVL=2
+SSH_AGENT_PID=3978
+SSH_AUTH_SOCK=/tmp/ssh-EcAFQ1hkxGr1/agent.3943
+STRINGS=arm-poky-linux-gnueabi-strings
+STRIP=arm-poky-linux-gnueabi-strip
+sysconfdir=/etc
+systemd_system_unitdir=/lib/systemd/system
+systemd_unitdir=/lib/systemd
+systemd_user_unitdir=/usr/lib/systemd/user
+TARGET_CFLAGS= -O2 -pipe -g -feliminate-unused-debug-types -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0=/usr/src/debug/linux-karo/4.14.24-r0 -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native= -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot=
+TARGET_CPPFLAGS=
+TARGET_CXXFLAGS= -O2 -pipe -g -feliminate-unused-debug-types -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0=/usr/src/debug/linux-karo/4.14.24-r0 -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native= -fdebug-prefix-map=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot=
+TARGET_LDFLAGS=-Wl,-O1 -Wl,--hash-style=gnu -Wl,--as-needed
+TERMINFO=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.14.24-r0/recipe-sysroot-native/usr/share/terminfo
+TERM=xterm
+UBOOT_ARCH=arm
+USER=oliver
+_=/usr/bin/printenv
+VISUAL=emacs
+WINDOWID=88097578
+XAUTHORITY=/home/oliver/.Xauthority
+XDG_CONFIG_DIRS=/etc/xdg
+XDG_CURRENT_DESKTOP=XFCE
+XDG_DATA_DIRS=/usr/share/xfce4:/usr/local/share/:/usr/share/:/usr/share
+XDG_GREETER_DATA_DIR=/var/lib/lightdm/data/oliver
+XDG_MENU_PREFIX=xfce-
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+XDG_SEAT=seat0
+XDG_SESSION_COOKIE=658751505ca64f209bbea6b07631185e-1522243629.802162-218157855
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session0
+XDG_VTNR=7
+```
+
+
+```
+Changed: Added includes and removed obsolete references to allow for compiling
+         against Linux 4.14.24 kernel.
+
+csr/synergy/framework/3.1/bsp/ports/pclin/inc/csr_framework_ext_types.h
+    Inserted includes for Linux wait states
+
+
+csr/os_linux/driver/bh.c
+csr/os_linux/driver/unifi_sme.c
+    Inserted includes for Linux kernel schedulers
+
+csr/os_linux/driver/netdev.c
+    Removed usage of last_rx, in accordance to the following kernel changes:
+
+    commit  4a7c972644c1151f6dd34ff4b5f7eacb239e22ee
+    Author: Tobias Klauser <tklauser@distanz.ch>
+    Date:   2017-01-18 17:45:01 +0100
+    net: Remove usage of net_device last_rx member
+
+```
+
+`make KDIR=/path/to/linux ARCH=arm CROSS_COMPILE=arm-linux- install_static`
+
+
+```
+make KDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source OUTPUT=/tftpboot/tx6/rootfs-wpa-6_karo-413 install_static
+make KDIR=/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source clean
+
+OUTPUT=/tftpboot/tx6/rootfs-wpa-7_karo-414
+/home/oliver/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source
+```
+
+
+```
+unset KBUILD_OUTPUT
+make KDIR=$HOME/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work-shared/imx6ul-txul-nand/kernel-source OUTPUT=/tftpboot/tx6/rootfs-wpa-7_karo-414 install_static
+```
