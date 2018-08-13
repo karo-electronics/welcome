@@ -16,21 +16,24 @@ Cortex A7 solutions
 * [TX6UL](#tx6ul)
 * [TX6ULL](#tx6ull)
 
-## A NeW
-
-Choosing a machine
-
+## Choosing a Machine
 This release supports the following machines. Depending on the target to be
 compiled choose the machine configuration that matches your TXCOM module.
 
-The user has to differentiate between payload software, like the operating
-system (GNU/Linux), and the bootloader (U-Boot), thus there are in above given
-table two different settings for `MACHINE=`.
+The user has to differentiate between payloads.
 
-This is an effect for the BSP as the U-Boot bootloader requires a different
-toolchain to be compiled with.
+There are two payloads the user can choose:
 
-## TX6S
+* Bootloader: U-Boot
+* OS: Kernel & RFS
+
+both require the user to define a different value for `MACHINE=`. This is
+because of limitations to how bootloader and OS are compiled and therein
+involved toolchain. Therefore the below given table gives two different settings
+for `MACHINE=`.
+
+## Machine List
+### TX6S
 **TX6S** are based upon the i.MX6S  
 _Note: see here for [PCN](#pcn)_
 
@@ -48,13 +51,13 @@ _Note: see here for [PCN](#pcn)_
 | `imx6dl-tx6-emmc` |      `tx6s-8035`       | TX6S-8035    | TX6S/800/512S/4GF/E85      |
 |                   |      `tx6s-8135`       | TX6S-8135    | TX6S/800/512S/4GF/E85/LVDS |
 
-## TX6DL
+### TX6DL
 **TX6DL** are based upon the i.MX6DL
 
 _Note: **TX6DL** are marked with _**TX6U**_  
 _Note: see here for [PCN](#pcn)_
 
-- NAND Modules
+- **NAND Modules**
 
 |    `MACHINE=`     | U-Boot <br> `MACHINE=` | TXCOM number | TXCOM name                  |
 |:-----------------:|:----------------------:|:------------ |:--------------------------- |
@@ -63,14 +66,14 @@ _Note: see here for [PCN](#pcn)_
 |                   |                        | _TX6U-8110_  | _(Legacy)_                  |
 |                   |      `tx6u-8130`       | TX6U-8130    | TX6DL/800/1024S/128F/I/LVDS |
 
-- eMMC Modules
+- **eMMC Modules**
 
 |    `MACHINE=`     | U-Boot <br> `MACHINE=` | TXCOM number | TXCOM name                   |
 |:-----------------:|:----------------------:|:------------ |:---------------------------- |
 | `imx6dl-tx6-emmc` |      `tx6u-8033`       | TX6U-8033    | TX6DL/800/1024S/4GF/E85      |
 |                   |      `tx6u-8133`       | TX6U-8133    | TX6DL/800/1024S/4GF/E85/LVDS |
 
-## TX6Q
+### TX6Q
 **TX6Q** are based upon the i.MX6Q  
 _Note: see here for [PCN](#pcn)_
 
@@ -90,7 +93,7 @@ _Note: see here for [PCN](#pcn)_
 | `imx6q-tx6-emmc` |      `tx6q-1036`       | TX6Q-1036    | TX6Q/1000/1024S/8GF |
 
 
-## TX6QP
+### TX6QP
 **TX6QP** are based upon the i.MX6QP  
 _Note: see here for [PCN](#pcn)_
 
@@ -101,7 +104,7 @@ _Note: see here for [PCN](#pcn)_
 | `imx6qp-tx6-emmc` |      `tx6q-8037`       | TX6Q-8037    | TX6QP/800/1GS/8GF/I    |
 |                   |      `tx6q-8137`       | TX6Q-8137    | TX6QP/800/1GS/8GF/LVDS |
 
-## TX6-UL
+### TX6-UL
 **TX6UL** are based upon the i.MX6UL  
 _Note: see here for [PCN](#pcn)_
 
@@ -119,7 +122,7 @@ _Note: see here for [PCN](#pcn)_
 | `imx6ul-tx6-emmc` |                        | _TXUL-0011_  | _(Legacy)_             |
 |                   |      `txul-5011`       | TXUL-5011    | TX6UL/528/256S/4GF/E85 |
 
-## TX6ULL
+### TX6ULL
 **TX6ULL** are based upon the i.MX6ULL  
 _Note: see here for [PCN](#pcn)_
 
@@ -129,6 +132,8 @@ _Note: see here for [PCN](#pcn)_
 |:-------------------:|:----------------------:|:------------ |:----------------------- |
 | `imx6ull-txul-emmc` |      `txul-8013`       | TXUL-8013    | TX6ULL/800/512S/4GF/E85 |
 
+
+## Setup Build Environment
 
 Set the above given, depending on your intended workload, as value in the
 machine configuration variable:
