@@ -153,11 +153,11 @@ Source: https://www.karo-electronics.de/1651.html
 [1]: Ka-Ro publishes changes to the TX COM in its PCN, which are available to
      the users in the respective TX COM download area on the [Ka-Ro website][2]
 
-[2]: http://www.karo-electronics.de
+[2]: https://www.karo-electronics.de
 [3]: http://elinux.org/Bitbake_Cheat_Sheet
 [4]: https://community.nxp.com/docs/DOC-94953
 [5]: http://www.crashcourse.ca/wiki/index.php/BitBake_Tutorial
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+[Ka-Ro electronics GmbH](https://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

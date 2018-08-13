@@ -150,7 +150,7 @@ tcl scripts
 
 [Anchor - Headline - of the thing](#footnotes-appendix)
 
-## Why we are, as we are.
+## Why we are, as we are?
 Simply put: We reserve us the right to offend.
 
 A good read about that is this:  

@@ -98,7 +98,7 @@ in the source tree.
 
 * Download the karo archive
 ```console
-  wget http://www.karo-electronics.de/fileadmin/download/yocto/fsl-community-bsp-jethro-karo-2016-03-16.tgz
+  wget https://www.karo-electronics.de/fileadmin/download/yocto/fsl-community-bsp-jethro-karo-2016-03-16.tgz
 ```
 * Extract files onto the FSL Community BSP tree
 ```console
@@ -220,5 +220,5 @@ easy programming of deployed images!
 ## Footnotes & Appendix
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+[Ka-Ro electronics GmbH](https://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

@@ -82,7 +82,9 @@ configuration variable:
 To setup the the Yocto environment insert a value, fitting the desired target,
 from the above table, looking like so:
 
-`MACHINE=tx6u-8030 source setup-environment build`
+`MACHINE=tx6u-8030 source ./setup-environment build-gnulinux`
+
+`MACHINE=tx6u-8030 source ./setup-environment build-bootloader`
 
 ### Choosing an image target
 Choose an image target to build, e.g.:
@@ -138,7 +140,7 @@ but can be used in a normal procedure as well.
 To initialize the build environment when the session has been exited, run the
 following command in the directory above the build directory:
 
-`setup-environment <build directory>`
+`source ./setup-environment <build directory>`
 
 ### Image Deployment
 After a build is complete, the created image resides in the "`tmp/deploy/images`"
@@ -160,11 +162,11 @@ Source: <https://www.karo-electronics.de/1651.html>
 
 <a name="pcn">1</a>: Ka-Ro publishes changes to the TX COM in its PCN, which are available to the users in the respective TX COM download area on the [Ka-Ro website][2]
 
-[2]: http://www.karo-electronics.de
+[2]: https://www.karo-electronics.de
 [3]: http://elinux.org/Bitbake_Cheat_Sheet
 [4]: https://community.nxp.com/docs/DOC-94953
 [5]: http://www.crashcourse.ca/wiki/index.php/BitBake_Tutorial
 
 ---
-[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+[Ka-Ro electronics GmbH](https://www.karo-electronics.de)  
 Contact support: support@karo-electronics.de

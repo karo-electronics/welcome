@@ -26,30 +26,42 @@ There are two solutions to the aforementioned causes, which are as follows:
 
 * Recovery Boot
     * State: **bricked**
-        * Main cause: Bootloader (U-Boot) rendered inoperative
+        * Main cause: Bootloader (U-Boot) rendered inoperative  
+
+
 * Empty NVM
-    * State: **bootable** && **no OS boot**
+    * State: **bootable**
+    * Sub-State: **no OS boot**
+    * 
         * Main cause: Missing partition table
 
 The hereafter described procedures assumes the following:  
 
-* TXCOM placed in one of the development baseboards:
-    * StarterKit 5
-        * StarterKit 5v3
-        * StarterKit 5v5
-    * "Mainboard 7" or "Mainboard 7 SD"
-    * TXUL-Evalkit
+* TXCOM placed in a development baseboard
+	* Baseboards available:
+		* StarterKit 5
+			* StarterKit 5v3
+			* StarterKit 5v5
+		* MB7
+			* Mainboard 7
+			* Mainboard 7 SD
+		* TXUL-Evalkit
 
 Pre-requisites:  
-* TFTP server
-    * Linux: included / available via package management
+
+* TFTP server 
+    * Linux (recommended): tftpd-hpa  
+	  (please consult the package management of your distribution for more)
     * Windows (recommended): `tftpd32` | `tftpd64` - [available here][tftpd]
 
+
 Recommended:  
+
 * Terminal programm
-    * Linux: included / available via package management
-        * e.g.: minicom
+    * Linux (recommended): minicom  
+	  (please consult the package management of your distrobution for more)
     * Windows (recommended): [`PuTTY`][PuTTY] | [`TeraTerm`][TeraTerm]
+* NFS server
 
 
 ## Recovery Boot
@@ -58,6 +70,12 @@ of TXCOM  with NAND NVM, includes special commands handling the reapplication of
 the bootloader to the TXCOM, thus "un-bricking" the module.
 
 Required TXCOM state:  
+
+Note:  
+The actual filename depends on the TX6 CoM variant in use, e.g.:  
+*TX6Q-1010* (`..._tx6q-1010.bin`), *TX6U-8010* (`..._tx6u-8010.bin`)
+
+
 
 * State "**bricked**"
 
@@ -70,9 +88,6 @@ Required TXCOM state:
    6.) Prepare the TFTP server:
           •   Locate the U-Boot binary (Ch. 2.2.1 - StarterKit CD under: U-Boot/target)
           •   Copy the file(s) into the TFTP server's data directory (usually "/tftpboot")
-                                                          Note:
-                             The actual filename depends on the TX6 CoM variant in use, e.g.:
-                              TX6Q-1010 (..._tx6q-1010.bin), TX6U-8010 (..._tx6u-8010.bin)
    7.) Connect the STK5 per USB (Ch. 2.1.3)
           •   Power-up of the module
           •   NO Power-up / Reset output will appear (Ch. 1.3)
@@ -109,24 +124,27 @@ The hereafter described procedures require either:
 
 
 * NFS shares available with a RFS (a.k.a. "_NFS root_")  
+
 or  
-* Files extracted from the MFGTool packed file
+
+* Files extracted from the MFGTool packed file  
 
 Which of the solution is chosen is more a question of taste, and facility. As the
 procedure is similar to procedures used in development the here preferred method
 is the usage of _NFS root_. Further information about _NFS root_ can be found
 [here](#nfs-root) or [here](#footnotes-appendix)
 
-Required TXCOM state:  
+- TXCOM state:  
 
-* State: **bootable** && **no OS boot**
+    * State:     **bootable**
+    * Sub-State: **no OS boot**
 
 All hard- and software is presumed to be factory issued.
 
 ### Introduction
 
-In the moment the TXCOM is bootable - i.e. having a working bootloader installed -
-there are multiple ways to get a working OS onto the module's NVM. The primary
+In the moment the TXCOM is bootable, meaning that the TXCOM has a working 
+bootloader installed, there are multiple ways to get a working OS onto the module's NVM. The primary
 solutions are:
 
 * Manual
@@ -163,143 +181,247 @@ file="%_DTB%"     address="%_ADDR_DTB%"     - Loading dtb.
 
 ---
 
-LINUX-MMC
+### LINUX-MMC
+
 ```console
 Boot...
 
-$ cd /dev;for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'`;do [ -e ${d}rpmb ] && continue;ln -s $d emmc;break;done"> Select SD device...
-$ cd /dev;for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'`;do [ -e ${d}rpmb ] || continue;ln -sf $d emmc;break;done"> Select eMMC device if possible...
-$ [ -b /dev/emmc ] && (echo label-id:0x0cc66cc0; echo size=30720,type=c; echo type=83) | sfdisk /dev/emmc"> Partitioning...
-$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1">Format Linux partition
-$ [ -b /dev/$(readlink /dev/emmc)p2 ] && mkfs.ext3 /dev/$(readlink /dev/emmc)p2">Format rootfs partition
+# Select SD device
+$ cd /dev ; for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'` ; do [ -e ${d}rpmb ] && continue ; ln -s $d emmc ; break ; done
 
-$ mkdir -p /mnt/mmcblk0p1"/>
-$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/mmcblk0p1"/>
-$ pipe cat - > /mnt/mmcblk0p1/uImage" file="%_KRNL%">Write kernel image
-$ frf">flush the memory.
-$ pipe cat - > /mnt/mmcblk0p1/logo.bmp" file="%_LOGO%">Write logo bitmap
-$ frf">flush the memory.
-$ umount /mnt/mmcblk0p1"/>
-$ rmdir /mnt/mmcblk0p1"/>
+# Select eMMC device if possible
+$ cd /dev ; for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'` ; do [ -e ${d}rpmb ] || continue ; ln -sf $d emmc ; break ; done
 
-$ mkdir -p /mnt/mmcblk0p2"/>
-$ mount -t ext3 /dev/$(readlink /dev/emmc)p2 /mnt/mmcblk0p2"/>
-$ pipe tar -x%_ROOTFS_TAROPT%v -C /mnt/mmcblk0p2" file="%_ROOTFS%">Sending and writing rootfs
-$ frf">flush the memory.
-$ pipe tar -C /mnt/mmcblk0p2 -x%_MODULES_TAROPT%vf - lib ./lib usr ./usr" file="%_MODULES%">Write modules
-$ frf">flush the memory.
-$ umount /mnt/mmcblk0p2"/>
-$ rmdir /mnt/mmcblk0p2"/>
+# Partitioning
+$ [ -b /dev/emmc ] && (echo label-id:0x0cc66cc0; echo size=30720,type=c ; echo type=83) | sfdisk /dev/emmc
 
+# Format Linux partition
+$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1
+
+# Format rootfs partition
+$ [ -b /dev/$(readlink /dev/emmc)p2 ] && mkfs.ext3 /dev/$(readlink /dev/emmc)p2
+
+$ mkdir -p /mnt/mmcblk0p1
+$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/mmcblk0p1
+
+# Write kernel image
+$ cat - > /mnt/mmcblk0p1/uImage file="%_KRNL%"
+
+# Flush the memory
+$ sync
+
+# Write logo bitmap
+$ cat - > /mnt/mmcblk0p1/logo.bmp file="%_LOGO%"
+
+# Flush the memory
+$ sync
+
+$ umount /mnt/mmcblk0p1
+$ rmdir /mnt/mmcblk0p1
+
+$ mkdir -p /mnt/mmcblk0p2
+$ mount -t ext3 /dev/$(readlink /dev/emmc)p2 /mnt/mmcblk0p2
+
+# Sending and writing rootfs
+$ tar -x%_ROOTFS_TAROPT%v -C /mnt/mmcblk0p2" file="%_ROOTFS%"
+
+# Flush the memory
+$ sync
+
+# Write modules
+$ tar -C /mnt/mmcblk0p2 -x%_MODULES_TAROPT%vf - lib ./lib usr ./usr file="%_MODULES%"
+
+# Flush the memory
+$ sync
+
+$ umount /mnt/mmcblk0p2
+$ rmdir /mnt/mmcblk0p2
+
+# Done
 $ echo "Update Complete!"
 ```
 
 ---
 
-LINUX-SD
+### LINUX-SD
+
 ```console
 Boot...
 
-$ cd /dev;for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'`;do [ -e ${d}rpmb ] && continue;ln -s $d emmc;break;done"> Select SD device...
-$ [ -b /dev/emmc ] && (echo size=30720,type=c; echo type=83) | sfdisk /dev/emmc"> Partitioning...
-$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1">Format Linux partition
-$ [ -b /dev/$(readlink /dev/emmc)p2 ] && mkfs.ext3 /dev/$(readlink /dev/emmc)p2">Format rootfs partition
+$ cd /dev ; for d in `ls | sed '/mmcblk/!d;/p/d;/boot/d'` ; do [ -e ${d}rpmb ] && continue ; ln -s $d emmc ; break ; done
 
-$ mkdir -p /mnt/mmcblk0p1"/>
-$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/mmcblk0p1"/>
-pipe cat - > /mnt/mmcblk0p1/uImage" file="%_KRNL%">Write kernel image
-frf">flush the memory.
-pipe cat - > /mnt/mmcblk0p1/logo.bmp" file="%_LOGO%">Write logo bitmap
-frf">flush the memory.
-$ umount /mnt/mmcblk0p1"/>
-$ rmdir /mnt/mmcblk0p1"/>
+# Select SD device...
+# Partitioning...
+$ [ -b /dev/emmc ] && (echo size=30720,type=c ; echo type=83) | sfdisk /dev/emmc
+# Format Linux partition
+$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1
+# Format rootfs partition
+$ [ -b /dev/$(readlink /dev/emmc)p2 ] && mkfs.ext3 /dev/$(readlink /dev/emmc)p2
 
-$ mkdir -p /mnt/mmcblk0p2"/>
-$ mount -t ext3 /dev/$(readlink /dev/emmc)p2 /mnt/mmcblk0p2"/>
-pipe tar -x%_ROOTFS_TAROPT%v -C /mnt/mmcblk0p2" file="%_ROOTFS%">Sending and writing rootfs
-frf">flush the memory.
-pipe tar -C /mnt/mmcblk0p2 -x%_MODULES_TAROPT%vf - lib ./lib usr ./usr" file="%_MODULES%">Write modules
-frf">flush the memory.
-$ umount /mnt/mmcblk0p2"/>
-$ rmdir /mnt/mmcblk0p2"/>
+$ mkdir -p /mnt/mmcblk0p1
+$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/mmcblk0p1
 
-$ echo Update Complete!">Done
+# Write kernel image
+$ cat - > /mnt/mmcblk0p1/uImage file="%_KRNL%"
+
+# Flush the memory
+$ sync
+
+# Write logo bitmap
+$ cat - > /mnt/mmcblk0p1/logo.bmp file="%_LOGO%"
+
+# Flush the memory
+$ sync
+
+$ umount /mnt/mmcblk0p1
+$ rmdir /mnt/mmcblk0p1
+
+
+$ mkdir -p /mnt/mmcblk0p2
+$ mount -t ext3 /dev/$(readlink /dev/emmc)p2 /mnt/mmcblk0p2
+
+# Sending and writing rootfs
+$ tar -x%_ROOTFS_TAROPT%v -C /mnt/mmcblk0p2 file="%_ROOTFS%"
+
+# Flush the memory
+$ sync
+
+# Write modules
+$ tar -C /mnt/mmcblk0p2 -x%_MODULES_TAROPT%vf - lib ./lib usr ./usr file="%_MODULES%"
+
+# Flush the memory
+$ sync
+
+$ umount /mnt/mmcblk0p2
+$ rmdir /mnt/mmcblk0p2
+
+# Done
+$ echo "Update Complete!"
 ```
+
 
 ---
 
-MMC-HIREL
+
+### MMC-HIREL
+
 ```console
 Boot...
 
-$ ln -s $(cd /dev;ls mmcblk*rpmb | sed s/rpmb//) /dev/emmc"> Select eMMC...
-$ [ $(mmc extcsd read /dev/emmc | sed '/PARTITION_SETTING_COMPLETED/!d;s/^.* //;s/[^0-9a-fx]*//gi') == 0x00 ]"> Check if partitioning is possible...
+# Select eMMC
+$ ln -s $(cd /dev;ls mmcblk*rpmb | sed s/rpmb//) /dev/emmc
+
+# Check if partitioning is possible
+$ [ $(mmc extcsd read /dev/emmc | sed '/PARTITION_SETTING_COMPLETED/!d;s/^.* //;s/[^0-9a-fx]*//gi') == 0x00 ]
+
 $ mmc enh_area set -y 0 $(( \
     $(mmc extcsd read /dev/emmc | sed '/MAX_ENH_SIZE_MULT/!d;s/^.* //') \
     * $(mmc extcsd read /dev/emmc | sed '/HC_WP_GRP_SIZE/!d;s/^.* //;s/[^0-9a-fx]*//gi') \
     * $(mmc extcsd read /dev/emmc | sed '/HC_ERASE_GRP_SIZE/!d;s/^.* //;s/[^0-9a-fx]*//gi') \
     * 512 )) /dev/emmc | \
-    grep 'Device power cycle needed'"> Set enhanced eMMC area - power cycle needed...
-$ echo Update Complete!">DONE - POWER CYCLE NEEDED!
+    # Set enhanced eMMC area - power cycle needed...
+    grep 'Device power cycle needed'
+
+# DONE - POWER CYCLE NEEDED
+$ echo "Update Complete!"
 ```
+
+
 ---
 
-WINDOWS-NAND
+
+### WINDOWS-NAND
+
+
 ```console
-Boot...
+# Boot...
 
-frf">flush the memory.
-$ cd /dev;for d in `grep osimage1 /proc/mtd | sed 's/:.*//'`;do ln -s $d mtdosimage1;break;done"> Select NK partition...
-pipe nandwrite -p /dev/mtdosimage1" file="%_KRNL%">Write NK
-frf">flush the memory.
-$ cd /dev;for d in `grep logo /proc/mtd | sed 's/:.*//'` null;do ln -s $d mtdlogo;break;done"> Select logo partition...
-pipe nandwrite -p /dev/mtdlogo">Write logo bitmap
-frf">flush the memory.
+# Flush the memory
+$ sync
 
-$ echo Update Complete!">Done
+# Select NK partition
+$ cd /dev ; for d in `grep osimage1 /proc/mtd | sed 's/:.*//'` ; do ln -s $d mtdosimage1 ; break ; done
+
+# Write NK
+$ nandwrite -p /dev/mtdosimage1 file="%_KRNL%"
+
+# Flush the memory
+$ sync
+
+# Select logo partition
+$ cd /dev ; for d in `grep logo /proc/mtd | sed 's/:.*//'` null ; do ln -s $d mtdlogo ; break ; done
+
+# Write logo bitmap
+$ nandwrite -p /dev/mtdlogo
+
+# Flush the memory
+$ sync
+
+# Done
+$ echo "Update Complete!"
 ```
+
+
 ---
 
-WINDOWS-MMC
+
+### WINDOWS-MMC
+
+
 ```console
-Boot...
+# Boot...
 
-$ ln -s $(cd /dev;ls mmcblk*rpmb | sed s/rpmb//) /dev/emmc"> Select eMMC...
-$ [ -b /dev/emmc ] && (echo label-id:0x0cc66cc0; echo size=325632,type=c; echo type=c) | sfdisk /dev/emmc"> Partitioning...
-$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1">Format Windows partition
+# Select eMMC
+$ ln -s $(cd /dev;ls mmcblk*rpmb | sed s/rpmb//) /dev/emmc
 
-$ mkdir -p /mnt/emmcp1"/>
-$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/emmcp1"/>
-pipe cat - > /mnt/emmcp1/nk" file="%_NK%">Write NK
-frf">flush the memory.
-pipe cat - > /mnt/emmcp1/logo.bmp" file="%_LOGO%">Write logo bitmap
-frf">flush the memory.
-$ umount /mnt/emmcp1"/>
-$ rmdir /mnt/emmcp1"/>
+# Partitioning
+$ [ -b /dev/emmc ] && (echo label-id:0x0cc66cc0; echo size=325632,type=c; echo type=c) | sfdisk /dev/emmc
 
-$ echo Update Complete!">Done
+# Format Windows partition
+$ [ -b /dev/$(readlink /dev/emmc)p1 ] && mkfs.vfat /dev/$(readlink /dev/emmc)p1
+
+$ mkdir -p /mnt/emmcp1
+$ mount -t vfat /dev/$(readlink /dev/emmc)p1 /mnt/emmcp1
+
+# Write NK
+$ cat - > /mnt/emmcp1/nk file="%_NK%"
+
+# Flush the memory
+$ sync
+
+# Write logo bitmap
+$ cat - > /mnt/emmcp1/logo.bmp" file="%_LOGO%"
+
+# Flush the memory
+$ sync
+
+# Finish by cleanly un-mounting the filesystem
+$ umount /mnt/emmcp1
+$ rmdir /mnt/emmcp1
+
+# Done
+$ echo "Update Complete!"
 ```
 
 ---
 ## Footnotes & Appendix
-[eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC
-[mfg-xml]: file://Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml
-[tftpd]: http://tftpd32.jounin.net/
-[PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-[TeraTerm]: https://ttssh2.osdn.jp/index.html.en
+[eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC  
+[mfg-xml]: file://Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml  
+[tftpd]: http://tftpd32.jounin.net/  
+[PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html  
+[TeraTerm]: https://ttssh2.osdn.jp/index.html.en  
 
 
 ---
-<a id="nfs-root"></a>
-NFS root:  
-http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems
-https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt
-https://wiki.archlinux.org/index.php/Diskless_system
-http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem
-https://fedoraproject.org/wiki/StatelessLinux/NFSRoot
-https://help.ubuntu.com/community/DisklessUbuntuHowto
+<a id="nfs-root">NFS root:</a>  
+http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems  
+https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt  
+https://wiki.archlinux.org/index.php/Diskless_system  
+http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem  
+https://fedoraproject.org/wiki/StatelessLinux/NFSRoot  
+https://help.ubuntu.com/community/DisklessUbuntuHowto  
 
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
-Contact support: support@karo-electronics.de
+Contact support: support@karo-electronics.de  
