@@ -1,7 +1,7 @@
 # H1
 Text_H1
 
-* [`name_ref0`](ref0#da-topic)  <- external file + heading
+* [`name_ref0`](ref0.md#da-topic)  <- external file + heading
 * [`name_ref0.2`](ref0)         <- external file **ONLY**
 * [`name_ref1`][ref1]           <- internal
 
