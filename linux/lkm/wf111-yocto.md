@@ -1,20 +1,41 @@
-# Compile the WF111 LKM under Yocto
+# WF111 LKM
+
+## Compile the LKM manually
+This example uses Ka-Ro's Yocto BSP, but is follows the basic steps for
+"out-of-tree" kernel module compile for the Linux kernel, as widely outlined
+and explained, by 3rd party resources, like the LKM own README and/or
+otherwise publicly avaialble resources.
 
 ## Introduction
 This is a how to for manually compiling the SiLabs (f.k.a. Bluegiga) WF111
 WLAN module drives for Linux under the Yocto environment.
 
-
 ## Out-of-tree module
 The driver, as it is partially proprietary, is not part of the general Kernel
 sources as available from [Kernel.org][1]
 
+### Yocto
+Yocto is just used as the basic surrounding of the compile of the LKM.
+The LKM is intended to be used in Yocto RFS as well as the Yocto provides an
+pre-setup environment incl. a compiler and more and thus reducing steps and
+thus complexity from the whole.
 
 ### Extract sources
 
-user@hostname: ~/projects/yocto/rocko_rel-2018-04/wf111 $
+Working direcrtory:
 
+```console
+user@hostname: ~/projects/yocto/rocko_rel-2018-04/wf111 $
 ```
+
+hererafter shortend to the common marker for console prompt
+
+```console
+$
+```
+
+what does the drivers `make help` say:
+```console
 $ make help
 Build environment for Linux drivers of Bluegiga WF111 module
 
@@ -42,8 +63,7 @@ Example: make KDIR=/path/to/linux ARCH=arm CROSS_COMPILE=arm-linux- install_stat
 ```
 
 ```
-[user@hostname]: ~/projects/yocto/rocko_rel-2018-04/wf111 $
-
+$
 CROSS_COMPILE=arm-poky-linux-gnueabi-
 OUTPUT=/tftpboot/tx6/rootfs-wpa-3/
 
@@ -293,10 +313,9 @@ Location:
 
 ~/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.13-r0/package/lib/modules/4.13.0-karo-tx6+g3d523ec
 ~/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/work/imx6ul_txul_nand-poky-linux-gnueabi/linux-karo/4.13-r0/package/
-
-https://github.com/torvalds/linux/blob/master/Documentation/kbuild/modules.txt
 ```
 
+https://github.com/torvalds/linux/blob/master/Documentation/kbuild/modules.txt
 ```
 === 2. How to Build External Modules
 
@@ -517,21 +536,32 @@ the fowlloing command needs "OUTPUT" to be defined otherwise will the
 compile drop the created modules-firmware-userspace tools into the source
 
 #### directory
+```console
 make OUTPUT=$OUTPUT install_static
 cd $OUTPUT
+```
 
 # tar-ing
+```console
 tar -czvf MyBackup.tar.gz /home/user/public_html/ --exclude "/home/user/public_html/tmp"
 # create module tar
+```
+
+```console
 export DEPLOY=$HOME/projects/yocto/rocko_rel-2018-04/build-imx6ul-txul-nand/tmp/deploy/images/imx6ul-txul-nand
+```
 # 4.13
 ## modules--4.13-r0-imx6ul-txul-nand-20180425123754.tgz
+```console
 tar -czvf $DEPLOY/modules--4.13-r0-imx6ul-txul-nand-wf111_prepped-$(sdate).tgz . --exclude "boot" --exclude "build" --exclude "source"
 tar -czvf $DEPLOY/modules--4.13-r0-imx6ul-txul-nand-wf111_installed-$(sdate).tgz . --exclude "boot" --exclude "build" --exclude "source"
+```
 
 # 4.14
+```console
 tar -czvf $DEPLOY/modules--4.14.24-r0-imx6ul-txul-nand-wf111_prepped-$(sdate).tgz . --exclude "boot" --exclude "build" --exclude "source"
 tar -czvf $DEPLOY/modules--4.14.24-r0-imx6ul-txul-nand-wf111_installed-$(sdate).tgz . --exclude "boot" --exclude "build" --exclude "source"
+```
 
 ## clean up
 1) goto: wf111 source directory
@@ -592,8 +622,7 @@ users in the respective TX COM download area on the [Ka-Ro website][2]
 [4]: https://community.nxp.com/docs/DOC-94953
 [5]: http://www.crashcourse.ca/wiki/index.php/BitBake_Tutorial
 
-# https://unix.stackexchange.com/questions/162131/is-this-a-good-way-to-create-a-patch
-#
+https://unix.stackexchange.com/questions/162131/is-this-a-good-way-to-create-a-patch
 
 
 ---

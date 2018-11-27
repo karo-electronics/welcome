@@ -34,62 +34,71 @@ You can go to [[http://www.yoctoproject.org/docs/current/ref-manual/ref-manual.h
 
 First of all update your local repository:
 
+```console
 sudo apt-get update
+```
 
 Install essential Yocto Project host packages:
 
-sudo apt-get install gawk wget git-core diffstat unzip \
-texinfo gcc-multilib build-essential chrpath socat
+```console
+sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \
+build-essential chrpath socat
+```
 
 i.MX layers host packages:
 
-sudo apt-get install libsdl1.2-dev xterm sed cvs \
-subversion coreutils texi2html docbook-utils \
-python-pysqlite2 help2man make gcc g++ desktop-file-utils \
-libgl1-mesa-dev libglu1-mesa-dev mercurial autoconf \
+```console
+sudo apt-get install libsdl1.2-dev xterm sed cvs subversion coreutils \
+texi2html docbook-utils python-pysqlite2 help2man make gcc g++ \
+desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev mercurial autoconf \
 automake groff curl lzop asciidoc u-boot-tools
+```
 
 ## Setting up the repo utility
 
-Repo is a tool built on top of Git that makes it easier to manage projects that contain multiple repositories, which do not need to be on the same server. Repo complements very well the layered nature of the Yocto Project, making it easier for customers to add their own layers to the BSP.
+`repo` is a tool built on top of `git` that makes it easier to manage projects
+that contain multiple repositories, which do not need to be on the same server.
+Repo complements very well the layered nature of the Yocto Project, making it
+easier for customers to add their own layers to the BSP.
 
-To install the “repo” utility, perform these steps:
+To install the `repo` utility, perform these steps:
 ```console
- curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
- chmod a+x ~/bin/repo
- ```
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+chmod a+x ~/bin/repo
+```
 
 ## Yocto Project Setup
 
 First make sure that git is setup properly with the commands below.
 
 ```console
- git config --global user.name "Your Name"
- git config --global user.email "Your Email"
+ git config --global user.name "<Your Name>"
+ git config --global user.email "<Your Email>"
  git config --list
  ```
 
 The NXP/Freescale Yocto Project BSP Release directory contains a "sources" directory, which contains the recipes used to build, one or more build directories, and a set of scripts used to set up the environment. The recipes used to build the project come from both the community and NXP/Freescale. The Yocto Project layers are downloaded to the sources directory. This sets up the recipes that are used to build the project. The following example shows how to download the NXP/Freescale Yocto Project Community BSP recipe layers. For this example, a directory called fsl-release-bsp is created for the project.
 
-Use the stable branch "jethro":
+Use the (current) stable branch _**jethro**_:
 
 ```console
- mkdir yocto-karo-fcb && cd yocto-karo-fcb
- repo init -u https://github.com/karo-electronics/fsl-community-bsp-platform -b jethro
- repo sync
+mkdir yocto-karo-fcb && cd yocto-karo-fcb
+repo init -u https://github.com/karo-electronics/fsl-community-bsp-platform -b jethro
+repo sync
 ```
-
 When this process is completed, the source code is checked out into the
 directory "sources" under the working directory, which is in the example above
-"fsl-community-bsp".
+**fsl-community-bsp**.
 
-You can update the source code of all by performing a repo synchronization,
-with the command "repo sync". User should update to the latest codebase
-periodically. But at least after a prolonged timespan an update is strongly
-recommended.
+In case errors occur during repo initialization, try deleting the .repo
+directory and running the repo initialization command again.
 
-If errors occur during repo initialization, try deleting the .repo directory
-and running the repo initialization command again.
+User can update the source code - and should so peridoically - of all recipes and
+Yocto parts by performing a repo synchronization, with the command:
+
+`$ repo sync`
+
+**! After a prolonged timespan an update is strongly recommended !**
 
 ## Ka-Ro patches
 
@@ -98,12 +107,15 @@ in the source tree.
 
 * Download the karo archive
 ```console
-  wget https://www.karo-electronics.de/fileadmin/download/yocto/fsl-community-bsp-jethro-karo-2016-03-16.tgz
+wget
+https://www.karo-electronics.de/fileadmin/download/yocto/fsl-community-bsp-jethro-karo-2016-03-16.tgz
 ```
+
 * Extract files onto the FSL Community BSP tree
 ```console
  tar xzf fsl-community-bsp-jethro-karo-2016-03-16.tgz
 ```
+
 ## Choosing a machine
 
 This release supports the following machines. Choose the machine configuration
@@ -126,25 +138,29 @@ MACHINE=<name-from-list-above>
 The command to setup of the Yocto environment in it's general form looks like
 the following:
 
- MACHINE=<MACHINE> source setup-environment <build-directory>
+```console
+MACHINE=<MACHINE> source setup-environment <build-directory>
+```
 
 Where the user has to insert a value, fitting the desired target, from the
 above table, and choose a name for the build directory to be created by the
 "setup-environment" script, to look like such:
 
- MACHINE=tx6u-80x0 source setup-environment it-shall-be-named-appropriately
+```console
+MACHINE=tx6u-80x0 source setup-environment <it-shall-be-named-appropriately>
+```
 
 ## Choosing an image target
 
 Choose an image target to build, e.g.:
 
- core-image-minimal
+`core-image-minimal`
 
 This builds a minimal image consisting of:
 
-	1. Kernel
-	2. Bootloader
-	3. RFS
+1. Kernel
+2. Bootloader
+3. RFS
 
 The RFS (or: rootfs, or: root file system) in this instance is a low key file
 system generally intended for either first steps and/or headless systems. It
@@ -155,7 +171,7 @@ Additional packages can be added to images as long as there is a recipe
 provided for that package. A comprehensive listing of available layers can be
 found for example here:
 
-[[https://layers.openembedded.org/|https://layers.openembedded.org]]
+[Layers @ openembedded.org]([https://layers.openembedded.org/|https://layers.openembedded.org)
 
 ## Building an image target
 
@@ -163,11 +179,11 @@ found for example here:
 
 Examples:
 
-* For building U-Boot only:
+* For only building Bootloader (_U-Boot_):
 
   `bitbake u-boot-karo`
 
-* For building Linux kernel and kernel modules only:
+* For only building OS kernel (Linux) and LKM:
 
   `bitbake linux-karo`
 
@@ -190,25 +206,25 @@ file.
 
 The following files are created for Ka-Ro TX modules:
 
-| Filename | Content |
-| ---------| :-----: |
-| `u-boot.bin` | U-Boot binary
-| `uImage` | Kernel image
-| `modules-<machine>.tgz` | Kernel modules
-| `<image>-<machine>.tar.bz2` | RFS
+| Filename                    |    Content     |
+| --------------------------- |:-------------- |
+| `u-boot.bin`                | U-Boot binary  |
+| `uImage`                    | Kernel image   |
+| `modules-<machine>.tgz`     | Kernel modules |
+| `<image>-<machine>.tar.bz2` | RFS            |
 
-Add 'init=/sbin/init' to the standard U-Boot kernel command line, e.g.:
+Add `init=/sbin/init` to the standard U-Boot kernel command line, e.g.:
 
 `setenv append_bootargs 'init=/sbin/init'`
 
 (the single qoutes, e.g. 'string', guarantee that U-Boot will not interpret
-commands entered a variable values are not executed but taken "as-is."
+commands entered and variable values are not executed but taken "as-is."
 
-The variable 'append_bootargs' is integrated into the U-Boot startup scripts by
+The variable `append_bootargs` is integrated into the U-Boot startup scripts by
 default, allowing users to integrate variables without disturbing the default
 behaviour by changes in the default settings.
 
-Also will variable 'append_bootargs' mitigate the problem that the U-Boot
+Also will variable `append_bootargs` mitigate the problem that the U-Boot
 variables as saved in the environment are subject to a maxium string lenght.
 
 

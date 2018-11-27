@@ -2,12 +2,28 @@
 Welcome to the Ka-Ro software repositories on [Github][gh-com]. Here we offer
 the sources for the our Linux and Yocto solutions ... as we go along.
 
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Welcome to Ka-Ro at Github](#welcome-to-ka-ro-at-github)
+	- [A short introduction](#a-short-introduction)
+		- [This page](#this-page)
+		- [TX standard](#tx-standard)
+		- [Ka-Ro TX6 Series](#ka-ro-tx6-series)
+		- [_Mainline Linux Kernel_](#mainline-linux-kernel)
+		- [Yocto](#yocto)
+	- [What sources](#what-sources)
+	- [Devicetree](#devicetree)
+	- [Footnotes, Appendix & Sources](#footnotes-appendix-sources)
+
+<!-- /TOC -->
+
 ## A short introduction
 ### This page
 
-This page is to provide an introduction to the Ka-Ro Yocto BSP via  listing and easy access to the documentation concerning
-the TXCOM product software. Which include the solutions based of either the
-_Mainline Linux Kernel_ or _Yocto_ based one.
+This page is to provide an introduction to the Ka-Ro Yocto BSP via  listing and
+easy access to the documentation concerning the TXCOM product software. Which
+include the solutions based of either the _Mainline Linux Kernel_ or _Yocto_
+based one.
 
 ### TX standard
 The _Computer On Module_ (COM) of Ka-Ro's general TX family COM ("**TXCOM**"
@@ -53,57 +69,67 @@ Here on Github we provide access to these main areas:
     * The Bootloader '**Das U-Boot**' with integrated support for the TXCOM modules:  
     `karo-tx-uboot` -
     [[sources]](https://github.com/karo-electronics/karo-tx-uboot) -
-    [[docu]](uboot/uboot_getting-started.md) -
-    [[PDF]][uboot-pdf]
+    [[docu]](uboot/uboot_getting-started.md)  
 
-    * Flattend Device Tree  
-    A short "How-to work with the Device Tree under U-Boot" can be found here: [[PDF]][fdt-qref]  
-    For more comprehensive documentation please look here: [[docu]](dts/dt_home.md)
+
+* __Flattend Device Tree__  
+    * see [Devicetree](#devicetree) below
+
 
 * __OS Kernel: Linux__  
     * _Linux Kernel - Mainline_  
-    Version: **v4.13**  
-    Linux for TXCOM modules based on the _mainline_ release kernel  
-    `karo-tx-linux` -
-    [[sources]](https://github.com/karo-electronics/karo-tx-linux) -
+      Version: **v4.13**  
+      Linux for TXCOM modules based on the _mainline_ release kernel  
+      `karo-tx-linux` -
+      [[sources]](https://github.com/karo-electronics/karo-tx-linux)  
 
     * _Linux Kernel - Mainline LTS_  
-    Version: **v4.14.24**  
-    Linux for TXCOM modules based on the _mainline longterm (LTS)_ release kernel  
-    [`kernel.org`][korg] -
-    [[sources]](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tag/?h=v4.14.24)
+      Version: **v4.14.24**  
+      Linux for TXCOM modules based on the _mainline longterm (LTS)_ release kernel  
+      [`kernel.org`][korg] -
+      [[sources]](https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/tag/?h=v4.14.24)
 
     * _Linux Kernel - NXP (Yocto)_  
-    Version: **v4.9.88_2.0.0_ga**  
-    Linux based upon NXP BSP kernel  
-    this includes the proprietary driver blob to fully support hardware acceleration  
-    `NXP - linux-2.6-imx.git` -
-    [[sources @ NXP]](https://source.codeaurora.org/external/imx/linux-imx/tag/?h=rel_imx_4.9.88_2.0.0_ga)
+      Version: **v4.9.88_2.0.0_ga**  
+      Linux based upon NXP BSP kernel  
+      this includes the proprietary driver blob to fully support hardware acceleration  
+      `NXP - linux-2.6-imx.git` -
+      [[sources @ NXP]](https://source.codeaurora.org/external/imx/linux-imx/tag/?h=rel_imx_4.9.88_2.0.0_ga)
 
 * __Yocto__  
     * _Getting Started_  
-    [[Getting started]](https://www.karo-electronics.com/1840.html?&L=1)
+      [[Getting started]](https://www.karo-electronics.de/1920.html)
 
     * _Ka-Ro Yocto BSP_  
-    `karo-bsp` -
-    [[source]](https://github.com/karo-electronics/karo-bsp) -
-    [[README]](https://github.com/karo-electronics/karo-bsp#ka-ro-yocto-bsp) -
-    [[wiki]](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
+      `karo-bsp` -
+      [[source]](https://github.com/karo-electronics/karo-bsp) -
+      [[README]](https://github.com/karo-electronics/karo-bsp#ka-ro-yocto-bsp) -
+      [[wiki]](https://github.com/karo-electronics/fsl-community-bsp-platform/wiki)
 
     * _Yocto BSP layer for NXP's ARM based platforms_  
-    `meta-karo` -
-    [[source]](https://github.com/karo-electronics/meta-karo.git) -
-    [[README]](https://github.com/karo-electronics/meta-karo#ka-ro-yocto-bsp)
+      `meta-karo` -
+      [[source]](https://github.com/karo-electronics/meta-karo.git) -
+      [[README]](https://github.com/karo-electronics/meta-karo#ka-ro-yocto-bsp)
 
     * _Sample images created with Yocto_  
-    `karo-yocto-images` -   [[samples]](https://github.com/karo-electronics/karo-yocto-images#sample-images-created-with-yocto)
+      `karo-yocto-images` -
+      [[samples]](https://github.com/karo-electronics/karo-yocto-images#sample-images-created-with-yocto)
 
     * _Poky fork of the official yoctoproject.org poky repository_  
       This fork includes some fixes.  
       `poky` - [[source]](https://github.com/karo-electronics/poky)
 
+
+## Devicetree
+Find documentation and more resources concerning the Devicetree (DT) here:
+
+* __Documentation__  
+    * _Device Tree Documentation_  
+      [[Device Tree Documentation]](dts/dt_home.md)
+
+
 ---
-## Footnotes & Appendix
+## Footnotes, Appendix & Sources
 [gh-com]: https://github.com/karo-electronics
 [tx-std]: https://www.karo-electronics.com/tx-standard.html
 [uboot-pdf]: https://github.com/karo-electronics/welcome/blob/master/uboot/TX6_U-Boot.pdf

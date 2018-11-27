@@ -32,7 +32,7 @@ There are two solutions to the aforementioned causes, which are as follows:
 * Empty NVM
     * State: **bootable**
     * Sub-State: **no OS boot**
-    * 
+    *
         * Main cause: Missing partition table
 
 The hereafter described procedures assumes the following:  
@@ -49,7 +49,7 @@ The hereafter described procedures assumes the following:
 
 Pre-requisites:  
 
-* TFTP server 
+* TFTP server
     * Linux (recommended): tftpd-hpa  
 	  (please consult the package management of your distribution for more)
     * Windows (recommended): `tftpd32` | `tftpd64` - [available here][tftpd]
@@ -69,7 +69,9 @@ The _Recover Boot_ procedure, while basically the same as the recovery procedure
 of TXCOM  with NAND NVM, includes special commands handling the reapplication of
 the bootloader to the TXCOM, thus "un-bricking" the module.
 
-Required TXCOM state:  
+- TXCOM state:  
+
+    * State "**bricked**"
 
 Note:  
 The actual filename depends on the TX6 CoM variant in use, e.g.:  
@@ -77,42 +79,44 @@ The actual filename depends on the TX6 CoM variant in use, e.g.:
 
 
 
-* State "**bricked**"
 
-```
-   1.) Set (close) BOOT_MODE jumper (ST3)
-   2.) Connect the STK5 debug UART (Ch. 2.1.1)
-   3.) Launch the terminal application (Ch. 1.2)
-   4.) Connect the STK5 per Ethernet to the network (Ch. 2.1.2)
-   5.) Setup a DHCP server (needed for 'bootp', see Ch. 2.1.2 & 2.5)
-   6.) Prepare the TFTP server:
-          •   Locate the U-Boot binary (Ch. 2.2.1 - StarterKit CD under: U-Boot/target)
-          •   Copy the file(s) into the TFTP server's data directory (usually "/tftpboot")
-   7.) Connect the STK5 per USB (Ch. 2.1.3)
-          •   Power-up of the module
-          •   NO Power-up / Reset output will appear (Ch. 1.3)
-   8.) Start U-Boot on the TX6 with 'sbloader' (Ch. 2.2.4.1 sbloader)
-              ./sbloader-x86_32 -m -s /cdrom/U-Boot/target/u-boot.bin
-   9.) Abort autoboot (press any key)
-          •   Power-up / Reset output will appear (Ch. 1.3)
-   10.) Recover the TX6 using following commands:
-          Full factory recovery:
-              Procedure: Set and load U-Boot image into memory → Write it to eMMC
-              setenv autoload y
-              setenv autostart n
-              setenv uboot_file u-boot-tx6.bin
-              bootp ${uboot_file}
-              mmc partconf 0 ${emmc_boot_ack} ${emmc_boot_part} ${emmc_boot_part}
-              mmc write ${fileaddr} 0 400
-              mmc partconf 0 ${emmc_boot_ack} ${emmc_boot_part} 0
-   11.) Power down the module
-   12.) Remove (open) BOOT_MODE jumper (ST3)
-   13.) Re-apply power to start from flash
-          •   Power-up / Reset output will appear (Ch. 1.3)
-   14.) Abort autoboot (press any key)
-   15.) Done.
-```
 
+   ```
+    1.)  Set (close) BOOT_MODE jumper (ST3)
+    2.)  Connect the STK5 debug UART
+    3.)  Launch the terminal application
+    4.)  Connect the STK5 per Ethernet to the network
+    5.)  Setup a DHCP server
+         (needed for 'bootp')
+    6.)  Prepare the TFTP server:
+         - Locate the U-Boot binary
+           StarterKit CD under: U-Boot/target
+         - Copy the file(s) into the TFTP server's data directory,
+           usually: /tftpboot
+    7.)  Connect the STK5 per USB
+         - Power-up of the module
+         - NO Power-up / Reset output will appear
+    8.)  Start U-Boot on the TX6 with 'sbloader'
+         ./sbloader-x86_32 -m -s /cdrom/U-Boot/target/u-boot.bin
+    9.)  Abort autoboot (press any key)
+         - Power-up / Reset output will appear
+    10.) Recover the TX6 using following commands:
+         Full factory recovery:
+         Procedure: Set and load U-Boot image into memory → Write it to eMMC
+             setenv autoload y
+             setenv autostart n
+             setenv uboot_file u-boot-tx6.bin
+             bootp ${uboot_file}
+             mmc partconf 0 ${emmc_boot_ack} ${emmc_boot_part} ${emmc_boot_part}
+             mmc write ${fileaddr} 0 400
+             mmc partconf 0 ${emmc_boot_ack} ${emmc_boot_part} 0
+    11.) Power down the module
+    12.) Remove (open) BOOT_MODE jumper (ST3)
+    13.) Re-apply power to start from flash
+         - Power-up / Reset output will appear (Ch. 1.3)
+    14.) Abort autoboot (press any key)
+    15.) Done.
+   ```
 
 ## Install of OS
 
@@ -132,7 +136,7 @@ or
 Which of the solution is chosen is more a question of taste, and facility. As the
 procedure is similar to procedures used in development the here preferred method
 is the usage of _NFS root_. Further information about _NFS root_ can be found
-[here](#nfs-root) or [here](#footnotes-appendix)
+[here](#nfs-root) or [here](#footnotes-appendix-sources)
 
 - TXCOM state:  
 
@@ -143,7 +147,7 @@ All hard- and software is presumed to be factory issued.
 
 ### Introduction
 
-In the moment the TXCOM is bootable, meaning that the TXCOM has a working 
+In the moment the TXCOM is bootable, meaning that the TXCOM has a working
 bootloader installed, there are multiple ways to get a working OS onto the module's NVM. The primary
 solutions are:
 
@@ -165,7 +169,6 @@ Yet, rather unlike a PC, there is no ready to use CD/USB stick to boot the
 
 
 ---
-
 ```xml
 <!--U-Boot update and environment setup: -->
 body="Recovery" file="%_MFGUBOOT%" >Loading mfg U-Boot.
@@ -180,7 +183,6 @@ file="%_DTB%"     address="%_ADDR_DTB%"     - Loading dtb.
 ```
 
 ---
-
 ### LINUX-MMC
 
 ```console
@@ -242,7 +244,6 @@ $ echo "Update Complete!"
 ```
 
 ---
-
 ### LINUX-SD
 
 ```console
@@ -299,10 +300,7 @@ $ rmdir /mnt/mmcblk0p2
 $ echo "Update Complete!"
 ```
 
-
 ---
-
-
 ### MMC-HIREL
 
 ```console
@@ -326,12 +324,8 @@ $ mmc enh_area set -y 0 $(( \
 $ echo "Update Complete!"
 ```
 
-
 ---
-
-
 ### WINDOWS-NAND
-
 
 ```console
 # Boot...
@@ -363,10 +357,7 @@ $ echo "Update Complete!"
 
 
 ---
-
-
 ### WINDOWS-MMC
-
 
 ```console
 # Boot...
@@ -404,15 +395,8 @@ $ echo "Update Complete!"
 ```
 
 ---
-## Footnotes & Appendix
-[eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC  
-[mfg-xml]: file://Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml  
-[tftpd]: http://tftpd32.jounin.net/  
-[PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html  
-[TeraTerm]: https://ttssh2.osdn.jp/index.html.en  
+## Footnotes, Appendix & Sources
 
-
----
 <a id="nfs-root">NFS root:</a>  
 http://elinux.org/TFTP_Boot_and_NFS_Root_Filesystems  
 https://www.kernel.org/doc/Documentation/filesystems/nfs/nfsroot.txt  
@@ -421,7 +405,12 @@ http://wiki.emacinc.com/wiki/Booting_with_an_NFS_Root_Filesystem
 https://fedoraproject.org/wiki/StatelessLinux/NFSRoot  
 https://help.ubuntu.com/community/DisklessUbuntuHowto  
 
+[eMMC-wiki]: https://en.wikipedia.org/wiki/MultiMediaCard#eMMC  
+[mfg-xml]: file://Mfgtools-TX6-2016-12a/Profiles/TX6/OS%20Firmware/ucl2.xml  
+[tftpd]: http://tftpd32.jounin.net/  
+[PuTTY]: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html  
+[TeraTerm]: https://ttssh2.osdn.jp/index.html.en  
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
-Contact support: support@karo-electronics.de  
+Contact support: support@karo-electronics.de

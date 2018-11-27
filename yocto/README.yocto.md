@@ -13,11 +13,9 @@ Supporting factors for this behaviour for Yocto are, e.g.:
    GNU infrastructure like coreutils, bash, init, etc., are single parts. The
    solution doesn't require: a GUI, X11,
 
-3.
-
 
 ---
-## Footnotes & Appendix
+## Footnotes, Appendix & Sources
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  

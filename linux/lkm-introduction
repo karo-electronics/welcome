@@ -1,2 +1,28 @@
 # LKM - Loadable Kernel module
 
+
+
+Fore more see these 3rd party resources:
+
+[1]   [2]   [3]   [4]   [5]
+
+
+---
+## Footnotes & References
+<a id="source"></a>
+Source: <https://www.karo-electronics.de/1651.html>
+
+<a name="pcn">PCN</a>:
+Ka-Ro publishes changes to the TX COM in its PCN, which are available to the
+users in the respective TX COM download area on the [Ka-Ro website][2]
+
+[1]: https://en.wikipedia.org/wiki/Loadable_kernel_module
+[2]: http://tldp.org/HOWTO/Module-HOWTO/x73.html
+[3]: https://www.linux.com/learn/kernel-newbie-corner-your-first-loadable-kernel-module
+[4]: https://learnlinuxconcepts.blogspot.com/2014/03/what-is-loadable-kernel-module.html
+
+[5]: https://stackoverflow.com/questions/22929065/difference-between-linux-loadable-and-built-in-modules
+
+---
+[Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
+Contact support: support@karo-electronics.de

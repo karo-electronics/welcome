@@ -157,10 +157,12 @@ machine configuration file.
 The following files are created for Ka-Ro TX modules:
 
 ---
-## Footnotes & Appendix
+## Footnotes, Appendix & Sources
 Source: <https://www.karo-electronics.de/1651.html>
 
-<a name="pcn">1</a>: Ka-Ro publishes changes to the TX COM in its PCN, which are available to the users in the respective TX COM download area on the [Ka-Ro website][2]
+<a name="pcn">1</a>: Ka-Ro publishes changes to the TX COM in its PCN, which
+are available to the users in the respective TX COM download area on
+the [Ka-Ro website][2].
 
 [2]: https://www.karo-electronics.de
 [3]: http://elinux.org/Bitbake_Cheat_Sheet
