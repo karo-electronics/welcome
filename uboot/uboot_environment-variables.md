@@ -1,4 +1,13 @@
-## U-Boot Environment Variables
+# U-Boot Environment Variables
+
+## Variables
+_Always_ use variables, _not_ addresses.
+
+If need be define a custom variable - e.g. `custaddr` to be included in the
+default environment via the U-Boot sources.
+
+Defining a custom default environment? [Here][uboot-src-4-env] see how.
+
 ## Transient Variables
 The following variables are automatically removed from the environment upon
 boot, since they are automagically set by certain U-Boot commands and have
@@ -19,7 +28,7 @@ only transient meaning:
 The following variables are statically compiled into the default environment of
 U-Boot and used application of commands:
 
-* `loadaddr`  
+* `loadaddr`<a id="loadaddr"></a>   
   The address where commands like `tftp`, `bootp` or `boot` by default load their
   payload data, e.g.:
 
@@ -123,7 +132,7 @@ from the saved environment upon boot):
 You can use these variables in boot scripts e.g. to select a fallback boot
 script when a watchdog reset occured:
 
-`setenv bootcmd 'run run bootcmd_${boot_mode}${wdreset} bootm_cmd'`  
+`setenv bootcmd 'run bootcmd_${boot_mode}${wdreset}; bootm_cmd'`  
 
 With the default setting of `boot_mode=nand` this will run either the commands
 stored in `bootcmd_nand` if no watchdog reset happened or `bootcmd_nand1` when a
@@ -135,7 +144,9 @@ actual OS, to make sure that the board is correctly configured (PMIC, cpu_clk,
 splash image).
 
 ---
-## Footnotes & Appendix
+## Footnotes, Appendix & Sources
+
+[uboot-src-4-env]: https://github.com/karo-electronics/karo-tx-uboot/blob/master/include/configs/tx6.h
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
