@@ -1,5 +1,19 @@
 # U-Boot Environment Variables
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [U-Boot Environment Variables](#u-boot-environment-variables)
+    - [Variables](#variables)
+    - [Transient Variables](#transient-variables)
+    - [Default Static Variables](#default-static-variables)
+    - [Configuration Variables](#configuration-variables)
+    - [Case based variables](#case-based-variables)
+    - [Footnotes, Appendix & Sources](#footnotes-appendix--sources)
+
+<!-- markdown-toc end -->
+
+
 ## Variables
 _Always_ use variables, _not_ addresses.
 
@@ -62,22 +76,22 @@ U-Boot and used application of commands:
 
 	* `net`  
       load kernel image via tftp (file `uImage`) and mount rootfs via NFS. This
-      requires the additional variables 'nfsroot' (path to rootfs on NFS server)
+      requires the additional variables `nfsroot` (path to rootfs on NFS server)
       and `nfs_server` (hostname or IP address of the NFS server) to be set.
 
 	* `jffs2`  
-      (_legacy_) load kernel from NAND partition 'linux' and mount
-      rootfs (fstype JFFS2) from partition 'rootfs'.
+      (_legacy_) load kernel from NAND partition 'linux' and mount rootfs
+      (fstype JFFS2) from partition `rootfs`.
 
 * `cpu_clk`  
   `[CPU freq {MHz}]` CPU clock frequency set after boot.
 
 * `jtag_disable`  
-  the i.MX6UL has the JTAG pins (`TRST`, `TCK`, `TMS`, `TDI`, `TDO`) multiplexed
-  with other pin functions (sound chip interface on STK5). Operation of the JTAG
-  interface requires these pins to be configured appropriately. U-Boot
-  configures these pins as JTAG pins unless the variable `jtag_disable` is set
-  to `y`.
+  the i.MX6UL (`TXUL[L]`) has the JTAG pins (`TRST`, `TCK`, `TMS`, `TDI`,
+  `TDO`) multiplexed with other pin functions (sound chip interface on
+  STK5). Operation of the JTAG interface requires these pins to be configured
+  appropriately. U-Boot configures these pins as JTAG pins unless the variable
+  `jtag_disable` is set to `y`.
 
 * `otg_mode`  
   `[host|device|none]` operation mode of the USBOTG port
@@ -107,14 +121,16 @@ U-Boot and used application of commands:
   understood by Linux `fb_find_mode()` function, e.g.: `640x480MR-24@60` LCD
   interface will be disabled when unset.
 
-**Note:**
-Some variables (like `cpu_clk` or `splashimage`) may render the board unbootable
-if incorrectly set. Therefore these variables will not be evaluated in case the
-board has been reset through a watchdog reset or `CTRL-C` is detected on the
-serial console during startup to give the user a chance to recover from this
-situation.
-You should **press and hold** `CTRL-C` **before** applying power to the module,
-for this to work.
+**Note:**  
+Some variables (like `cpu_clk` or `splashimage`) may render the board
+unbootable if incorrectly set. Therefore these variables will not be evaluated
+in case the board has been reset through a watchdog reset or `CTRL-C` is
+detected on the serial console during startup to give the user a chance to
+recover from this situation.  
+
+**Hint:**  
+**Press and Hold** `CTRL-C` **before** applying power to the module, for this
+to work.
 
 ## Case based variables
 The following variables are automatically created by U-Boot under
