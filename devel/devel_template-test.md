@@ -7,19 +7,22 @@ Text_H1
 
 # Somekind of TOC
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
 - [H1](#h1)
 - [Somekind of TOC](#somekind-of-toc)
-	- [H2](#h2)
-		- [H3](#h3)
-	- [Footnotes, Appendix & Sources](#footnotes-appendix-sources)
-		- [Refs](#refs)
-		- [Anchors](#anchors)
-			- [Notes concerning: Anchors & self-closing tags](#notes-concerning-anchors-self-closing-tags)
-			- [Notes concerning: Text placement](#notes-concerning-text-placement)
+    - [H2](#h2)
+        - [H3](#h3)
+            - [H4](#h4)
+    - [Footnotes, Appendix & Sources](#footnotes-appendix--sources)
+        - [Refs](#refs)
+        - [Anchors](#anchors)
+            - [Notes concerning: Anchors & self-closing tags](#notes-concerning-anchors--self-closing-tags)
+            - [Notes concerning: Text placement](#notes-concerning-text-placement)
+    - [This example text is no heading but an example, which shows what happens if you don't keep your distance to following element(s); in this case that of a (supposed) separator (`---`).](#this-example-text-is-no-heading-but-an-example-which-shows-what-happens-if-you-dont-keep-your-distance-to-following-elements-in-this-case-that-of-a-supposed-separator----)
 
-<!-- /TOC -->
+<!-- markdown-toc end -->
 
 ## H2
 Text_H2
@@ -86,6 +89,10 @@ ut nemo. Quidem in molestias eius mollitia et ut in mollitia.
 
 ### H3
 Text_H3
+
+#### H4
+Text_H4
+
 
 ---
 ## Footnotes, Appendix & Sources
