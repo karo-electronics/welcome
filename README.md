@@ -1,21 +1,24 @@
 # Welcome to Ka-Ro at Github
-Welcome to the Ka-Ro software repositories on [Github][gh-com]. Here we offer
-the sources for the our Linux and Yocto solutions ... as we go along.
+Welcome to the Ka-Ro software repositories on [Github][ghcom-karo]. Here we
+offer the sources for the our Linux and Yocto solutions ... as we go along.
 
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
 - [Welcome to Ka-Ro at Github](#welcome-to-ka-ro-at-github)
-	- [A short introduction](#a-short-introduction)
-		- [This page](#this-page)
-		- [TX standard](#tx-standard)
-		- [Ka-Ro TX6 Series](#ka-ro-tx6-series)
-		- [_Mainline Linux Kernel_](#mainline-linux-kernel)
-		- [Yocto](#yocto)
-	- [What sources](#what-sources)
-	- [Devicetree](#devicetree)
-	- [Footnotes, Appendix & Sources](#footnotes-appendix-sources)
+    - [A short introduction](#a-short-introduction)
+        - [This page](#this-page)
+        - [TX standard](#tx-standard)
+        - [Ka-Ro TX6 Series](#ka-ro-tx6-series)
+        - [_Bootloader: Das U-Boot_](#bootloader-das-u-boot)
+        - [_Mainline Linux Kernel_](#mainline-linux-kernel)
+        - [Yocto](#yocto)
+    - [What sources](#what-sources)
+    - [Devicetree](#devicetree)
+    - [Footnotes, Appendix & Sources](#footnotes-appendix--sources)
 
-<!-- /TOC -->
+<!-- markdown-toc end -->
 
 ## A short introduction
 ### This page
@@ -28,18 +31,19 @@ based one.
 ### TX standard
 The _Computer On Module_ (COM) of Ka-Ro's general TX family COM ("**TXCOM**"
 hereafter) are a series of **pin-compatible** COM, which follow the open and
-freely available Ka-Ro [TX-Standard][tx-std]. The standard allows for integration
-of solutions, depending on the solutions scale or intended target, thus making it
-easy to create a product platform with different features, like performance or
-peripherals, and/or with a future upgrade path.
+freely available Ka-Ro [TX-Standard][karo-tx-std]. The standard allows for
+integration of solutions, depending on the solutions scale or intended target,
+thus making it easy to create a product platform with different features, like
+performance or peripherals, and/or with a future upgrade path.
 
 The documentation herein is primarily targeted onto the TXCOM series known as
 TX6.
 
 ### Ka-Ro TX6 Series
-The Ka-Ro TX6 series herein, specifically is a series of COM comprising of a
-range of **NXP's i.MX6** SOC family; e.g. including but not exclusively the SOC
-of i.MX6Q and i.MX6UL.
+The Ka-Ro TX series of COM (see [TX standard](# , or short TXCOM, and herein,
+specifically the TX6 are a series of COM solutions comprising of a range of
+**NXP's i.MX6** SOC family; e.g. including but not exclusively the SOC of
+i.MX6Q and i.MX6UL.
 
 Ka-Ro TX6 modules are designed and made in Germany for the highest possible
 quality. Ka-Ro offers technical support directly from design engineers and
@@ -50,17 +54,27 @@ Support for TX6 modules is available for Linux, Microsoft Windows Embedded
 Compact, as well as is there partnered third-party support available for
 Android and QNX.
 
+### _Bootloader: Das U-Boot_
+Ka-Ro TX6 COM use as the initial bootloader ["Das U-Boot"][uboot-denx-home]
+
 ### _Mainline Linux Kernel_
-Ka-Ro is dedicated to development of the _Mainline Linux Kernel_, therefore the
-main Linux kernel used for the Ka-Ro Yocto BSP are based upon the
-[kernel.org][korg] (a.k.a. upstream) sources. This in turn means that Ka-Ro
-pushes all chances upstream as well.
+Ka-Ro is dedicated to development of the _Mainline Linux Kernel_, therefore
+the Linux kernels primarily used for the Ka-Ro Yocto BSP are based upon the
+sources [kernel.org][korg], a.k.a. upstream sources, either [directly][linux-tx-korg]
+or via [Ka-Ro's own repository][linux-tx-karo].  
+
+This commitment to the _Mainline Linux Kernel_ in turn means that Ka-Ro pushes
+all changes upstream; primarily via [LKML][linux-lkml]([LKML?][linux-lkml-wiki])
 
 ### Yocto
 The premise of Yocto is to offer the developer a framework to _create a
 distribution_, which in turn means __reproducible builds__. In case of Ka-Ro
-TXCOM this manifests in that the same sources for different TXCOM (e.g. TX6Q vs.
-TX6UL) create the same solution. [Would you like to know more?](yocto/README.yocto.md)
+TXCOM this [manifest][yocto-karo-manifest] in that the same sources for
+different TXCOM (e.g. TX6Q vs. TX6UL) create the same solution.  
+
+[Would you like to know more?][yocto-readme]
+[Take a look at the Ka-Ro BSP][yocto-karo-bsp-repo]
+
 
 ## What sources
 Here on Github we provide access to these main areas:
@@ -125,17 +139,40 @@ Find documentation and more resources concerning the Devicetree (DT) here:
 
 * __Documentation__  
     * _Device Tree Documentation_  
-      [[Device Tree Documentation]](dts/dt_home.md)
+      [[Device Tree Documentation]][dt-dt_home]
 
 
 ---
 ## Footnotes, Appendix & Sources
-[gh-com]: https://github.com/karo-electronics
-[tx-std]: https://www.karo-electronics.com/tx-standard.html
-[uboot-pdf]: https://github.com/karo-electronics/welcome/blob/master/uboot/TX6_U-Boot.pdf
-[fdt-qref]: https://github.com/karo-electronics/welcome/blob/master/dts/FDT-Quickreference.pdf
-[korg]: https://kernel.org
 
+[dt-dt_home]: /dts/dt_home.md
+
+[ghcom-karo]: https://github.com/karo-electronics
+
+[karo-tx-std]: https://www.karo-electronics.com/tx-standard.html
+
+[korg]: https://kernel.org
+[korg-mainline-1]: https://www.linux.com/blog/learn/2018/2/which-linux-kernel-version-stable
+[korg-mainline-2]: https://linux-sunxi.org/Mainline_Kernel_Howto
+[korg-mainline-3]: https://askubuntu.com/questions/162616/should-i-upgrade-to-the-mainline-kernels
+[korg-mainline-5]: localhost
+[korg-mainline-6]: localhost
+
+[linux-lkml]: https://lkml.org/
+[linux-lkml-wiki]: https://en.wikipedia.org/wiki/Linux_kernel_mailing_list
+
+[linux-tx-karo]: https://github.com/karo-electronics/karo-tx-linux
+[linux-tx-korg]: https://github.com/karo-electronics/meta-karo/blob/rocko/recipes-kernel/linux/linux-karo_4.14.24.bb
+
+[pdf-uboot]: https://github.com/karo-electronics/welcome/blob/master/uboot/TX6_U-Boot.pdf
+[pdf-fdt_qref]: https://github.com/karo-electronics/welcome/blob/master/dts/FDT-Quickreference.pdf
+
+[uboot-denx-home]: https://www.denx.de/wiki/U-Boot
+[uboot-denx-docu]: https://www.denx.de/wiki/U-Boot/Documentation
+
+[yocto-karo-manifest]: https://github.com/karo-electronics/karo-bsp/blob/rocko/default.xml
+[yocto-karo-bsp-repo]: https://github.com/karo-electronics/karo-bsp
+[yocto-readme]: /yocto/README.yocto.md)
 
 ---
 [Ka-Ro electronics GmbH](http://www.karo-electronics.de)  
