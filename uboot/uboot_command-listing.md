@@ -1,8 +1,17 @@
 # U-Boot commands
+List of commands available in U-Boot.
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
 
+- [U-Boot commands](#u-boot-commands)
+    - [List](#list)
+    - [Commands and explanations](#commands-and-explanations)
+    - [Footnotes, Appendix & Sources](#footnotes-appendix--sources)
 
-This list of commands available in U-Boot, is comprised from **all** TXCOM
+<!-- markdown-toc end -->
+
+As this list of commands available in U-Boot, is comprised from **all** TXCOM
 variants and thus can include commands that are either specific to a modules
 of:
 
@@ -27,7 +36,7 @@ variables in the U-Boot default environment of each TXCOM series, e.g.
 
 | Command                   | Description                                                                       |
 |:------------------------- |:--------------------------------------------------------------------------------- |
-| [`?`](#?)                 | alias for `help`                                                                  |
+| [`?`](#?)                 | alias for [`help`](#help)                                                         |
 | [`base`](#base)           | print or set address offset                                                       |
 | [`bdinfo`](#bdinfo)       | print Board Info structure                                                        |
 | [`bmp`](#bmp)             | manipulate BMP image data                                                         |
@@ -123,7 +132,7 @@ variables in the U-Boot default environment of each TXCOM series, e.g.
   the same as bootd;
   ```console
   boot                       - boot default, i.e., run 'bootcmd'
-  ``
+  ```
 
 * `bootce`<a id="bootce"></a>  
   bootce - Boot a Windows CE image from memory
