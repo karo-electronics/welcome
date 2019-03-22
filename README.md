@@ -1,3 +1,11 @@
+# New documentation
+
+You can find our new documentation here: [https://karo-electronics.github.io/docs/](https://karo-electronics.github.io/docs/)
+
+We're working on it. If you're missing something come back to this page.
+
+------------------------------------------------------------------------------------------------------------------------------------
+
 # Welcome to Ka-Ro at Github
 Welcome to the Ka-Ro software repositories on [Github][ghcom-karo]. Here we
 offer the sources for the our Linux and Yocto solutions ... as we go along.
